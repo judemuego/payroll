@@ -1,0 +1,148 @@
+
+/* .sc-modal-dialog.sc-xl {
+    max-width: 100% !important;
+} */
+
+b {
+    font-weight: bold;
+}
+
+.sc-modal-content {
+    height: calc(100% - 130px);
+    width: calc(100% - 100px);
+    background: rgba(0,0,0,0.4);
+    overflow: auto;
+    display: none;
+    position: fixed;
+    padding: 10px;
+}
+
+div#earnings table,
+div#deductions table {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.employee-details {
+    padding: 10px;
+    font-size: 15px;
+    border-bottom: 1px solid #3f3f3f;
+    margin-bottom: 25px;
+}
+
+
+div#earnings table td,
+div#earnings table th,
+div#deductions table td,
+div#deductions table th {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+div#earnings table th,
+div#deductions table th {
+    background: #ccc;
+}
+
+button.view-payslip {
+    background: transparent;
+    border: 0px;
+}
+
+table.employee-info-tbl thead th {
+    background: #6eafdb;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-align: left;
+}
+
+table.employee-info-tbl {
+    width: 100%;
+}
+
+table.employee-info-tbl td {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+table.employee-info-tbl td b {
+    font-weight: bold !important;
+}
+
+table.employee-info-tbl td span {
+    font-weight: normal;
+}
+
+tr.t-net-pay {
+    background: #bae5ff;
+    font-weight: bold;
+    color: #000;
+}
+
+#payslip_form table tbody tr:nth-child(2n) {
+    background: #f7f6f6;
+}
+
+table#overallTotal {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 1em;
+    border: 1px solid #bae5ff;
+}
+
+.overall_label {
+    font-size: 12px;
+    padding: 5px;
+    background: #bae5ff;
+    font-weight: bold;
+    color: #000;
+}
+
+table#overallTotal th {
+    padding: 5px;
+    background: #c6eaff;
+    color: #000;
+}
+
+table#overallTotal td {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.sent-email {
+    float: right;
+}
+
+.payroll-details table {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.payroll-details th {
+    background: #6eafdb;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+
+.payroll-details td {
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
+.payroll-details table {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #6eafdb;
+}
+
+#print_canvas button {
+    display: none !important;
+}
+
+#print_canvas .text-right {
+    text-align: right;
+}

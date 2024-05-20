@@ -1,0 +1,151 @@
+.employee_info {
+    padding: 5px;
+    border-radius: 50px;
+    background: #71b1f6;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    width: 235px;
+    font-size: 10px;
+}
+.employee_info img {
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+.employee-data {
+    display: flex;
+    padding: 10px;
+    background: #fff7d2;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.employee-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-position: center center !important;
+    background-size: cover !important;
+    border: 2px solid #c2c6ca;
+}
+.employee-details b {
+    font-weight: bold;
+}
+.employee-details {
+    padding: 10px 20px;
+}
+.record-details b {
+    font-weight: bold;
+}
+.sc-modal-dialog.sc-xl {
+    max-width: 1200px !important;
+}
+.time-entry-title {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.dataTable td {
+    vertical-align: top !important;
+}
+.record-status {
+    float: right;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.status-0 {
+    background: orange;
+}
+.status-1 {
+    background: #1c1c9d;
+}
+.status-2 {
+    background: #ffe007;
+}
+.status-3 {
+    background: #44ff07;
+}
+.status-4 {
+    background: #ff0713;
+}
+.status-5 {
+    background: #00d0ff;
+}
+.status-list ul {
+    list-style: none;
+    margin: 0px;
+    background: #fff;
+    position: absolute;
+    width: 140px;
+    border-radius: 3px;
+    margin-top: 18px;
+    /* margin-left: -55px; */
+    padding: 0px;
+    box-shadow: 0 0 6px 2px #ccc;
+}
+.status-list li a {
+    display: block;
+    color: #000;
+    padding: 3px 5px;
+    text-decoration: none;
+}
+.status-list li a:hover {
+    background: #eee;
+}
+.status-list {
+    display: none;
+}
+.status-list.show {
+    display: block;
+}
+
+span.colors {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+span.text-status {
+    font-size: 12px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.legend-status {
+    display: inline-block;
+    padding: 5px 15px;
+}
+.col-12.legend {
+    margin-bottom: 10px;
+}
+
+button.btn.btn-secondary.buttons-csv.buttons-html5 {
+    background: #30bf30 !important;
+    color: #fff !important;
+}
+
+button.btn.btn-secondary.buttons-pdf.buttons-html5 {
+    background: #bf3530 !important;
+    color: #fff !important;
+}
+
+.schedule-status.sch-1 {
+    color: #2bbd2b;
+    font-weight: bolder;
+}
+
+.schedule-status.sch-2 {
+    color: #b8110c;
+    font-weight: bolder;
+}
+
+td .form-control {
+    font-size: 10px;
+}
+
+.sc-modal-dialog.sc-xl {
+    max-width: 100% !important;
+}
