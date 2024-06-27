@@ -97,7 +97,7 @@
                     <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-toggle="dropdown">
                         <div class="sidebar-user">
                             <div class="profile-img">
-                                <img src="/backend/img/avatars/avatar.jpg" class="img-fluid rounded-circle mb-2" alt="Linda Miller" />
+                                <img src="/images/profile/{{Auth::user()->profile_img}}" class="img-fluid rounded-circle mb-2" alt="Linda Miller" />
                             </div>
                             <div class="profile-name">
                                 {{ Auth::user()->firstname.' '.(Auth::user()->middlename !== null || Auth::user()->middlename !== ''?Auth::user()->middlename.' ':'').Auth::user()->lastname }}
@@ -105,10 +105,8 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#"><i class="align-middle mr-1 fas fa-fw fa-user"></i> View Profile</a>
-                        <a class="dropdown-item" href="#"><i class="align-middle mr-1 fas fa-fw fa-comments"></i> Contacts</a>
-                        <a class="dropdown-item" href="#"><i class="align-middle mr-1 fas fa-fw fa-chart-pie"></i> Analytics</a>
-                        <a class="dropdown-item" href="#"><i class="align-middle mr-1 fas fa-fw fa-cogs"></i> Settings</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePhotoModal"><i class="align-middle mr-1 fas fa-fw fa-user"></i> Change Photo</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePasswordModal"><i class="align-middle mr-1 fas fa-fw fa-key"></i> Change Password</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="align-middle mr-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
