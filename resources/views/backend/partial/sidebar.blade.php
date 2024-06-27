@@ -38,17 +38,8 @@
                     <li class="list-title">EMPLOYEE</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee-information">EMPLOYEE PROFILE</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/201-file">201 FILE</a></li>
-                </ul>
-
-                <a href="#masterlist" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-user"></i> <span class="align-middle">MASTERLIST</span>
-                    </span>
-                </a>
-                <ul id="masterlist" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">MASTERLIST</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/masterlist/employee">EMPLOYEE</a></li>
-                </ul>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/masterlist/employee">EMPLOYEE MASTERLIST</a></li>
+                </ul>   
             </li>
             
             <li class="sidebar-header">
@@ -64,18 +55,6 @@
                 <ul id="payroll_system" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PAYROLL</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/summary">PAYROLL SUMMARY</a></li>
-                    {{-- <li class="sidebar-item"><a class="sidebar-link" href="/payroll/payslip">PAYLIP</a></li> --}}
-                </ul>
-            </li>
-
-            <li class="sidebar-item">
-                <a href="#timekeeping" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-clock"></i> <span class="align-middle">TIMEKEEPING</span>
-                    </span>
-                </a>
-                <ul id="timekeeping" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">TIMEKEEPING</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/time_logs">TIME LOGS</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/work_schedule">WORK SCHEDULE</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/scheduling">SCHEDULING</a></li>
@@ -83,20 +62,32 @@
                 </ul>
             </li>
 
+            <li class="sidebar-item">
+                <a href="#accounting" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-money-bill"></i> <span class="align-middle">ACCOUNTING</span>
+                    </span>
+                </a>
+                <ul id="accounting" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="list-title">ACCOUNTING</li>
+                </ul>
+            </li>
+            
+
+            <li class="sidebar-item">
+                <a href="#purchasing" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-shopping-basket"></i> <span class="align-middle">PURCHASING</span>
+                    </span>
+                </a>
+                <ul id="purchasing" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="list-title">PURCHASING</li>
+                </ul>
+            </li>
+
 
             <li class="sidebar-header">
                 SETUP
-            </li>
-            <li class="sidebar-item">
-                <a href="#setup" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-user"></i> <span class="align-middle">COMPANY</span>
-                    </span>
-                </a>
-                <ul id="setup" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">COMPANY SETUP</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/company-profile">COMPANY PROFILE</a></li>
-                </ul>
             </li>
             <li class="sidebar-item">
                 <a href="#organizational_setup" data-toggle="collapse" class="sidebar-link collapsed">
@@ -106,6 +97,7 @@
                 </a>
                 <ul id="organizational_setup" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">ORGANIZATIONAL SETUP</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/company-profile">COMPANY PROFILE</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/classes">CLASSES</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/department">DEPARTMENTS</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/position">POSITIONS</a></li>
@@ -126,7 +118,10 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/deductions">DEDUCTIONS</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/work_assignments">WORK ASSIGNMENTS</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/withholding_tax">WITHHOLDING TAX</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/sss">SSS TABLE</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/reimbursement">REIMBURSEMENT</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/sss">SSS</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/philhealth">PHILHEALTH</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/pagibig">PAG-IBIG</a></li>
                 </ul>
             </li>
             <li class="sidebar-item">
@@ -142,7 +137,7 @@
             <li class="sidebar-item">
                 <a href="#roles_permission" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-list-alt"></i> <span class="align-middle">ACCESS</span>
+                        <i class="align-middle mr-2 fas fa-fw fa-list-alt"></i> <span class="align-middle">USER ACCESS</span>
                     </span>
                 </a>
             </li>
