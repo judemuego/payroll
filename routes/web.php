@@ -18,6 +18,11 @@ Route::group(['middleware' => ['auth']], function() {
         // return view('backend.pages.dashboard');
         return view('backend.pages.payroll.transaction.employee.dashboard');
     });
+
+    Route::get('/po-sample', function () {
+        // return view('backend.pages.dashboard');
+        return view('backend.partial.purchase_order');
+    });
     
     Route::get('/dashboard', function () {
         return view('backend.pages.payroll.transaction.employee.dashboard');
