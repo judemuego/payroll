@@ -120,7 +120,7 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/deductions">DEDUCTIONS</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/work_assignments">WORK ASSIGNMENTS</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/withholding_tax">WITHHOLDING TAX</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/reimbursement">REIMBURSEMENT</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/reimbursements">REIMBURSEMENT</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/sss">SSS</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/philhealth">PHILHEALTH</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/pagibig">PAG-IBIG</a></li>

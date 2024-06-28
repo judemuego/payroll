@@ -232,6 +232,15 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/governmentMandated',          'BenefitsController@governmentMandatedBenefits'                )->name('get_government_mandated_benefits');
             Route::post         ('/otherCompany',                'BenefitsController@otherCompanyBenefits'                      )->name('get_other_company_benefits');
         });
+        
+        Route::group(['prefix' => '/reimbursements'], function (){
+            Route::get          ('/',                            'ReimbursementController@index'                                     )->name('page');
+            Route::get          ('/get',                         'ReimbursementController@get'                                       )->name('get');
+            Route::post         ('/save',                        'ReimbursementController@store'                                     )->name('save');
+            Route::get          ('/edit/{id}',                   'ReimbursementController@edit'                                      )->name('edit');
+            Route::post         ('/update/{id}',                 'ReimbursementController@update'                                    )->name('update');
+            Route::post         ('/destroy',                     'ReimbursementController@destroy'                                   )->name('destroy');
+        });
 
         Route::group(['prefix' => '/employment'], function (){
             Route::post          ('/update/{id}',                'EmploymentController@save'                                    )->name('save_employment');
