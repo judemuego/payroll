@@ -61,6 +61,26 @@ Route::group(['middleware' => ['auth']], function() {
         });
     });
 
+    Route::group(['prefix' => '/accounting'], function (){
+        Route::group(['prefix' => '/chart_of_accounts'], function (){
+            Route::get          ('/',                            'ChartOfAccountController@index'                                      )->name('classes');
+            Route::get          ('/get',                         'ChartOfAccountController@get'                                        )->name('get_classes');
+            Route::post         ('/save',                        'ChartOfAccountController@store'                                      )->name('save_classes');
+            Route::get          ('/edit/{id}',                   'ChartOfAccountController@edit'                                       )->name('edit_classes');
+            Route::post         ('/update/{id}',                 'ChartOfAccountController@update'                                     )->name('update_classes');
+            Route::post         ('/destroy',                     'ChartOfAccountController@destroy'                                    )->name('destroy_classes');
+        });
+
+        Route::group(['prefix' => '/account_types'], function (){
+            Route::get          ('/',                            'AccountTypeController@index'                                      )->name('classes');
+            Route::get          ('/get',                         'AccountTypeController@get'                                        )->name('get_classes');
+            Route::post         ('/save',                        'AccountTypeController@store'                                      )->name('save_classes');
+            Route::get          ('/edit/{id}',                   'AccountTypeController@edit'                                       )->name('edit_classes');
+            Route::post         ('/update/{id}',                 'AccountTypeController@update'                                     )->name('update_classes');
+            Route::post         ('/destroy',                     'AccountTypeController@destroy'                                    )->name('destroy_classes');
+        });
+    });
+
     Route::group(['prefix' => '/payroll'], function (){
         Route::get          ('/',                                'PayrollController@index'                                      )->name('payroll');
 

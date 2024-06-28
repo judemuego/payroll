@@ -2,38 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Site;
+use App\AccountType;
 use Illuminate\Http\Request;
 use Auth;
 
-class SiteController extends Controller
+class AccountTypeController extends Controller
 {
     public function index()
     {
-        $sites = Site::orderBy('id', 'desc')->get();
-        return view('backend.pages.purchasing.maintenance.site', compact('sites'));
+        $account_types = AccountType::orderBy('id', 'desc')->get();
+        return view('backend.pages.accounting.maintenance.account_type', compact('account_types'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'project_name' => ['required'],
-            'location' => ['required'],
-            'person_in_charge' => ['required']
+            'category' => ['required'],
+            'account_type' => ['required'],
         ]);
 
         $request['workstation_id'] = Auth::user()->workstation_id;
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
 
-        Site::create($request->all());
+        AccountType::create($request->all());
 
         return redirect()->back()->with('success','Successfully Added');
     }
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Site::orderBy('id', 'desc')->get())
+            return datatables()->of(AccountType::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -41,13 +40,13 @@ class SiteController extends Controller
 
     public function edit($id)
     {
-        $sites = Site::where('id', $id)->orderBy('id')->firstOrFail();
-        return response()->json(compact('sites'));
+        $account_types = AccountType::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('account_types'));
     }
 
     public function update(Request $request, $id)
     {
-        Site::find($id)->update($request->all());
+        AccountType::find($id)->update($request->all());
         return "Record Saved";
     }
 
@@ -56,7 +55,7 @@ class SiteController extends Controller
         $record = $request->data;
 
         foreach($record as $item) {
-            Site::find($item)->delete();
+            AccountType::find($item)->delete();
         }
 
         return 'Record Deleted';

@@ -37,17 +37,17 @@
                 <div class="row">
                     <div class="form-group col-md-12 project_name">
                         <label>Project Name</label>
-                        <input type="text" class="form-control" id="project_name" name="project_name" placeholder="Project Name"/>
+                        <input type="text" class="form-control" id="project_name" name="project_name"/>
                     </div>
 
                     <div class="form-group col-md-12 location">
                         <label>Location</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Project Location"/>
+                        <input type="text" class="form-control" id="location" name="location"/>
                     </div>
 
                     <div class="form-group col-md-12 person_in_charge">
                         <label>Project in Charge</label>
-                        <input type="text" class="form-control" id="person_in_charge" name="person_in_charge" placeholder="Person in Charge"/>
+                        <input type="text" class="form-control" id="person_in_charge" name="person_in_charge"/>
                     </div>
                 </div>
             </form>

@@ -52,10 +52,6 @@ class SupplierController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request['tax_applicable'] = isset($request['tax_applicable'])?1:0;
-        $request['government_mandated_benefits'] = isset($request['government_mandated_benefits'])?1:0;
-        $request['other_company_benefits'] = isset($request['other_company_benefits'])?1:0;
-
         Supplier::find($id)->update($request->all());
         return "Record Saved";
     }

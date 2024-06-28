@@ -37,42 +37,42 @@
                 <div class="row">
                     <div class="form-group col-md-12 supplier_name">
                         <label>Supplier Name</label>
-                        <input type="text" class="form-control" id="supplier_name" name="supplier_name" placeholder="Supplier Name"/>
+                        <input type="text" class="form-control" id="supplier_name" name="supplier_name"/>
                     </div>
 
                     <div class="form-group col-md-12 contact_no">
                         <label>Contact No</label>
-                        <input type="number" class="form-control" id="contact_no" name="contact_no" placeholder="Contact No"/>
+                        <input type="number" class="form-control" id="contact_no" name="contact_no"/>
                     </div>
 
                     <div class="form-group col-md-12 contact_person">
                         <label>Contact Person</label>
-                        <input type="text" class="form-control" id="contact_person" name="contact_person" placeholder="Contact Person"/>
+                        <input type="text" class="form-control" id="contact_person" name="contact_person"/>
                     </div>
 
                     <div class="form-group col-md-12 address">
                         <label>Address</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="Address"/>
+                        <input type="text" class="form-control" id="address" name="address"/>
                     </div>
 
                     <div class="form-group col-md-12 tin_no">
                         <label>TIN No</label>
-                        <input type="text" class="form-control" id="tin_no" name="tin_no" placeholder="TIN No"/>
+                        <input type="text" class="form-control" id="tin_no" name="tin_no"/>
                     </div>
 
                     <div class="form-group col-md-12 payment_terms">
                         <label>Payment Terms</label>
-                        <input type="text" class="form-control" id="payment_terms" name="payment_terms" placeholder="Payment Terms"/>
+                        <input type="text" class="form-control" id="payment_terms" name="payment_terms"/>
                     </div>
 
                     <div class="form-group col-md-12 bank_name">
                         <label>Bank Name</label>
-                        <input type="text" class="form-control" id="bank_name" name="bank_name" placeholder="Bank Name"/>
+                        <input type="text" class="form-control" id="bank_name" name="bank_name"/>
                     </div>
 
                     <div class="form-group col-md-12 bank_account">
                         <label>Bank Account</label>
-                        <input type="text" class="form-control" id="bank_account" name="bank_account" placeholder="Bank Account"/>
+                        <input type="text" class="form-control" id="bank_account" name="bank_account"/>
                     </div>
                 </div>
             </form>
