@@ -52,7 +52,10 @@ function success() {
     scion.create.sc_modal('withholding_tax_form').hide('all', modalHideFunction);
 }
 
-function error() {}
+function error() {
+    toastr.error('Record already exist.','Failed');
+
+}
 
 function delete_success() {
     $('#withholding_tax_table').DataTable().draw();

@@ -15,7 +15,7 @@ class PermissionController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Permission::get())
+            return datatables()->of(Permission::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }

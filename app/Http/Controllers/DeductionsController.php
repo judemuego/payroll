@@ -16,7 +16,7 @@ class DeductionsController extends Controller
     
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Deductions::get())
+            return datatables()->of(Deductions::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -24,20 +24,25 @@ class DeductionsController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'code' => 'required|unique:deductions',
             'type' => 'required',
             'status' => 'required',
         ]);
         
-        $request['workstation_id'] = Auth::user()->workstation_id;
-        $request['created_by'] = Auth::user()->id;
-        $request['updated_by'] = Auth::user()->id;
+        if (!Deductions::where('name', $validatedData['name'])->exists()) {
+            
+            $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['created_by'] = Auth::user()->id;
+            $request['updated_by'] = Auth::user()->id;
+        
+            Deductions::create($request->all());
+        }
+        else {
+            return false;
+        }
 
-        Deductions::create($request->all());
-
-        return response()->json(compact('validate'));
     }
     
     public function edit($id)

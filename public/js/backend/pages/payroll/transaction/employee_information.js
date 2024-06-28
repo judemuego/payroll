@@ -12,17 +12,6 @@ $(function() {
     $("#profile_img").cropzee({
         allowedInputs: ['png','jpg','jpeg']
     });
-    
-    onScan.attachTo(document, {
-        suffixKeyCodes: [13],
-        reactToPaste: true,
-        onScan: function(sCode, iQty) {
-            if(record_id !== null) {
-                $('#rfid').val(sCode);
-                $('.save').click();
-            }
-        }
-    });
 });
 
 
@@ -58,7 +47,9 @@ function success(record) {
     }
 }
 
-function error() {}
+function error() {
+    toastr.error('Employee already exist.', 'Failed');
+}
 
 function delete_success() {
 
@@ -107,7 +98,6 @@ function generateData() {
                 middlename: $('#middlename').val(),
                 lastname: $('#lastname').val(),
                 suffix: $('#suffix').val(),
-                rfid: $('#rfid').val(),
                 birthdate: $('#birthdate').val(),
                 gender: $('#gender').val(),
                 citizenship: $('#citizenship').val(),

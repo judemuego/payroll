@@ -38,7 +38,9 @@ function success() {
     scion.create.sc_modal('leave-types_form').hide('all', modalHideFunction);
 }
 
-function error() {}
+function error() {
+    toastr.error('Record already exist.', 'Failed')
+}
 
 function delete_success() {
     $('#leave_types_table').DataTable().draw();

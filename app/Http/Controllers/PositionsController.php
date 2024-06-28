@@ -17,7 +17,7 @@ class PositionsController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Positions::get())
+            return datatables()->of(Positions::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -25,17 +25,21 @@ class PositionsController extends Controller
 
     public function store(Request $request)
     {
-        $position = $request->validate([
+        $validatedData = $request->validate([
             'description' => ['required'],
         ]);
 
-        $request['workstation_id'] = Auth::user()->id;
-        $request['created_by'] = Auth::user()->id;
-        $request['updated_by'] = Auth::user()->id;
-
-        Positions::create($request->all());
-
-        return redirect()->back()->with('success','Successfully Added');
+        if (!Positions::where('description', $validatedData['description'])->exists()) {
+            
+            $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['created_by'] = Auth::user()->id;
+            $request['updated_by'] = Auth::user()->id;
+        
+            Positions::create($request->all());
+        }
+        else {
+            return false;
+        }
     }
 
     public function edit($id)

@@ -35,7 +35,7 @@ class LeavesController extends Controller
     
     public function get($id) {
         if(request()->ajax()) {
-            return datatables()->of(Leaves::with('leave_type')->where('employee_id', $id)->get())
+            return datatables()->of(Leaves::with('leave_type')->where('employee_id', $id)->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }

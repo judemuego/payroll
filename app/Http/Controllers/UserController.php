@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(User::get())
+            return datatables()->of(User::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -73,7 +73,8 @@ class UserController extends Controller
         User::find(Auth::user()->id)->update(['password'=> Hash::make($request->new_password)]);
 
         Auth::logout();
-        return redirect('/login');
+
+        return redirect('/login')->with('success','Successfully Updated');
     }
 
     public function changePicture(Request $request)
