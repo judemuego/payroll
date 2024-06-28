@@ -16,6 +16,7 @@ $(function() {
                 return html;
             }},
             { data: "name", title: "NAME" },
+            { data: "chart.account_name", title: "CHART OF ACCOUNT" },
             { data: "status", title: "STATUS", render: function(data, type, row, meta) {
                 var html = "";
                 if(row.status === 1) {
@@ -54,6 +55,7 @@ function generateData() {
     form_data = {
         _token: _token,
         name: $('#name').val(),
+        chart_id: $('#chart_id').val(),
         status: $('#status').val()
     };
 

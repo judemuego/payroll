@@ -20,7 +20,8 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>REIMBURSEMENT</th>
+                                <th>NAME</th>
+                                <th>CHART OF ACCOUNT</th>
                                 <th>STATUS</th>
                             </tr>
                         </thead>
@@ -45,6 +46,15 @@
                     <div class="form-group col-md-12 name">
                         <label>NAME</label>
                         <input type="text" class="form-control" id="name" name="name"/>
+                    </div>
+                    <div class="form-group col-md-12 chart_id">
+                        <label>CHART OF ACCOUNT</label>
+                        <select name="chart_id" id="chart_id" class="form-control">
+                            <option value=""></option>
+                            @foreach ($record as $item)
+                            <option value="{{$item->id}}">{{$item->account_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group col-md-12 status">
                         <label>STATUS</label>

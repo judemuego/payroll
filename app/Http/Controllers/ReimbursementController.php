@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Reimbursement;
+use App\ChartOfAccount;
 use Illuminate\Http\Request;
 
 class ReimbursementController extends Controller
 {
     public function index()
     {
-        $record = Reimbursement::orderBy('id', 'desc')->get();
+        $record = ChartOfAccount::orderBy('id', 'desc')->get();
         return view('backend.pages.payroll.maintenance.reimbursement', compact('record'));
     }
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Reimbursement::get())
+            return datatables()->of(Reimbursement::with('chart')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -25,7 +26,8 @@ class ReimbursementController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => ['required']
+            'name' => ['required'],
+            'chart_id' => ['required']
         ]);
 
         $request['workstation_id'] = Auth::user()->workstation_id;
