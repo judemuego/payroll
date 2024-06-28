@@ -45,6 +45,7 @@ class EmployeeInformation extends Model
         'pagibig_number',
         'philhealth_number',
         'status',
+        'rfid',
         'workstation_id',
         'created_by',
         'updated_by'

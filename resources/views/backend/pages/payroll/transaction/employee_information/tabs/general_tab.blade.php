@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="form-group">
                 @include('backend.partial.component.lookup', [
                     'label' => "EMPLOYEE NUMBER", 
@@ -35,7 +35,15 @@
                 ])
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
+            <div class="form-group">
+                <div class="employee-rfid">
+                    <label>RFID CODE:</label>
+                    <input type="text" id="rfid" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
             <div class="form-group status">
                 <label>STATUS <span class="required">*</span></label>
                 <select name="status" id="status" class="form-control">
