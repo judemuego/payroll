@@ -68,7 +68,7 @@ class CompanyProfileController extends Controller
     public function get()
     {
         if(request()->ajax()) {
-            return datatables()->of(CompanyProfile::get())
+            return datatables()->of(CompanyProfile::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
