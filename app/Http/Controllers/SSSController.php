@@ -15,7 +15,8 @@ class SSSController extends Controller
     public function get() {
         if(request()->ajax()) {
             return datatables()->of(
-                SSS::orderBy('id', 'desc')->get())
+                SSS::get()
+            )
             ->addIndexColumn()
             ->make(true);
         }

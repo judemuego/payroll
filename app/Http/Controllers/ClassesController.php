@@ -17,28 +17,22 @@ class ClassesController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $class = $request->validate([
             'description' => ['required']
         ]);
         
-        if (!Classes::where('description', $validatedData['description'])->exists()) {
-            
-            $request['workstation_id'] = Auth::user()->workstation_id;
-            $request['created_by'] = Auth::user()->id;
-            $request['updated_by'] = Auth::user()->id;
-        
-            Classes::create($request->all());
-        }
-        else {
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
 
-            return false;
-           
-        }
+        Classes::create($request->all());
+
+        return redirect()->back()->with('success','Successfully Added');
     }
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Classes::orderBy('id', 'desc')->get())
+            return datatables()->of(Classes::get())
             ->addIndexColumn()
             ->make(true);
         }

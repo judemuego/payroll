@@ -35,22 +35,17 @@ $(function() {
 });
 
 function success() {
-    
     switch(actions) {
         case 'save':
             break;
         case 'update':
             break;
     }
-
     $('#benefits_table').DataTable().draw();
     scion.create.sc_modal('benefits_form').hide('all', modalHideFunction);
 }
 
-
-function error() {
-    toastr.error('Record already exist.', 'Failed');
-}
+function error() {}
 
 function delete_success() {
     $('#benefits_table').DataTable().draw();

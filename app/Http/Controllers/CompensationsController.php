@@ -103,7 +103,7 @@ class CompensationsController extends Controller
     
     public function getGovernmentMandatedRecord($id) {
         if(request()->ajax()) {
-            return datatables()->of(EmployeeBenefits::with('benefits')->where('employee_id', $id)->where('type', 'government_mandated')->orderBy('id', 'desc')->get())
+            return datatables()->of(EmployeeBenefits::with('benefits')->where('employee_id', $id)->where('type', 'government_mandated')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -111,7 +111,7 @@ class CompensationsController extends Controller
     
     public function getCompanyBenefits($id) {
         if(request()->ajax()) {
-            return datatables()->of(EmployeeBenefits::with('benefits')->where('employee_id', $id)->where('type', 'other')->orderBy('id', 'desc')->get())
+            return datatables()->of(EmployeeBenefits::with('benefits')->where('employee_id', $id)->where('type', 'other')->get())
             ->addIndexColumn()
             ->make(true);
         }

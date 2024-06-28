@@ -64,9 +64,7 @@ function success() {
     scion.create.sc_modal('deductions_form').hide('all', modalHideFunction)
 }
 
-function error() {
-    toastr.error('Record already exist.','Failed');
-}
+function error() {}
 
 function delete_success() {
     $('#deductions_table').DataTable().draw();

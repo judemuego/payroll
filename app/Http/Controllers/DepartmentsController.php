@@ -17,7 +17,7 @@ class DepartmentsController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Departments::orderBy('id', 'desc')->get())
+            return datatables()->of(Departments::get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -25,22 +25,17 @@ class DepartmentsController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $department = $request->validate([
             'description' => ['required'],
         ]);
         
-        if (!Departments::where('description', $validatedData['description'])->exists()) {
-            
-            $request['workstation_id'] = Auth::user()->workstation_id;
-            $request['created_by'] = Auth::user()->id;
-            $request['updated_by'] = Auth::user()->id;
-        
-            Departments::create($request->all());
-        }
-        else {
-            return false;
-        }
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
 
+        Departments::create($request->all());
+
+        return redirect()->back()->with('success','Successfully Added');
     }
 
     public function edit($id)

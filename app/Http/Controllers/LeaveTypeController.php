@@ -17,26 +17,22 @@ class LeaveTypeController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validate = $request->validate([
             'leave_name' => 'required|unique:leave_types'
         ]);
 
-        if (!LeaveType::where('leave_name', $validatedData['leave_name'])->exists()) {
-            
-            $request['workstation_id'] = Auth::user()->workstation_id;
-            $request['created_by'] = Auth::user()->id;
-            $request['updated_by'] = Auth::user()->id;
-        
-            LeaveType::create($request->all());
-        }
-        else {
-            return false;
-        }
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        LeaveType::create($request->all());
+
+        return response()->json(compact('validate'));
     }
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(LeaveType::orderBy('id', 'desc')->get())
+            return datatables()->of(LeaveType::get())
             ->addIndexColumn()
             ->make(true);
         }

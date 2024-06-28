@@ -34,9 +34,7 @@ function success() {
     scion.create.sc_modal('positions_form').hide('all', modalHideFunction);
 }
 
-function error() {
-    toastr.error('Record already exist.','Failed');
-}
+function error() {}
 
 function delete_success() {
     $('#positions_table').DataTable().draw();

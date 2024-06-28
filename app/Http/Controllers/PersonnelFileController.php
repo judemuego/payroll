@@ -88,7 +88,7 @@ class PersonnelFileController extends Controller
     public function get()
     {
         if(request()->ajax()) {
-            return datatables()->of(PersonnelFile::orderBy('id', 'desc')->get())
+            return datatables()->of(PersonnelFile::get())
             ->addIndexColumn()
             ->make(true);
         }

@@ -15,7 +15,7 @@ class RolesController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Roles::orderBy('id', 'desc')->get())
+            return datatables()->of(Roles::get())
             ->addIndexColumn()
             ->make(true);
         }
