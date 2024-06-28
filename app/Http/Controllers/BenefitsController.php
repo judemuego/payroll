@@ -16,7 +16,7 @@ class BenefitsController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Benefits::get())
+            return datatables()->of(Benefits::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -29,13 +29,19 @@ class BenefitsController extends Controller
             'description' => ['required']
         ]);
 
-        $request['workstation_id'] = Auth::user()->workstation_id;
-        $request['created_by'] = Auth::user()->id;
-        $request['updated_by'] = Auth::user()->id;
-
-        Benefits::create($request->all());
-
-        return redirect()->back()->with('success','Successfully Added');
+        
+        if (!Benefits::where('benefits', $validatedData['benefits'])->exists()) {
+            
+            $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['created_by'] = Auth::user()->id;
+            $request['updated_by'] = Auth::user()->id;
+        
+            Benefits::create($request->all());
+        }
+        else { 
+            return false;
+           
+        }
     }
 
     public function edit($id)

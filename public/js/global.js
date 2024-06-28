@@ -75,7 +75,10 @@ var scion = {
                     if(typeof(error) != "undefined"){
                         error();
                     }
-                    toastr.error(response.responseJSON.message);
+                    else {
+                        toastr.error(response.responseJSON.message);
+
+                    }
                 });
             }
             else {

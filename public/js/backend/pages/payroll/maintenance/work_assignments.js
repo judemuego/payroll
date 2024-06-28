@@ -42,7 +42,9 @@ function success() {
     scion.create.sc_modal('work_assignments_form').hide('all', modalHideFunction)
 }
 
-function error() {}
+function error() {
+    toastr.error('Record already exist.', 'Failed');
+}
 
 function delete_success() {
     $('#work_assignments_table').DataTable().draw();

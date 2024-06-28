@@ -34,7 +34,9 @@ function success() {
     scion.create.sc_modal('departments_form').hide('all', modalHideFunction);
 }
 
-function error() {}
+function error() {
+    toastr.error('Record already exist.', 'Failed')
+}
 
 function delete_success() {
     $('#departments_table').DataTable().draw();

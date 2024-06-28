@@ -44,7 +44,7 @@ class PayrollCalendarController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(PayrollCalendar::get())
+            return datatables()->of(PayrollCalendar::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }

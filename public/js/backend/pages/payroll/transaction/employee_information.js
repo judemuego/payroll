@@ -58,7 +58,9 @@ function success(record) {
     }
 }
 
-function error() {}
+function error() {
+    toastr.error('Employee already exist.', 'Failed');
+}
 
 function delete_success() {
 

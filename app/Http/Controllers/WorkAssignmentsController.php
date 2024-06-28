@@ -15,7 +15,7 @@ class WorkAssignmentsController extends Controller
     
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(WorkAssignments::get())
+            return datatables()->of(WorkAssignments::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -23,18 +23,22 @@ class WorkAssignmentsController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required',
             'status' => 'required',
         ]);
         
-        $request['workstation_id'] = Auth::user()->workstation_id;
-        $request['created_by'] = Auth::user()->id;
-        $request['updated_by'] = Auth::user()->id;
-
-        WorkAssignments::create($request->all());
-
-        return response()->json(compact('validate'));
+        if (!WorkAssignments::where('title', $validatedData['title'])->exists()) {
+            
+            $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['created_by'] = Auth::user()->id;
+            $request['updated_by'] = Auth::user()->id;
+        
+            WorkAssignments::create($request->all());
+        }
+        else {
+            return false;
+        }
     }
     
     public function edit($id)

@@ -22,6 +22,7 @@
 
 @section('content')
 <div class="row" style="height:100%;">
+@include('backend.partial.flash-message')
     <div class="col-12" style="height:100%;">
         <div class="tab" style="height:100%;">
             <div class="tab-content">
