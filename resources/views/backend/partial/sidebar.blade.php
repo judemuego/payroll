@@ -18,7 +18,7 @@
             <li class="sidebar-header">
                 MAIN
             </li>
-            <li class="sidebar-item">   
+            <li class="sidebar-item">
                 <a href="#dashboard" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-tachometer-alt"></i> <span class="align-middle">DASHBOARD</span>
@@ -39,9 +39,9 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee-information">EMPLOYEE PROFILE</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/201-file">201 FILE</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/masterlist/employee">EMPLOYEE MASTERLIST</a></li>
-                </ul>   
+                </ul>
             </li>
-            
+
             <li class="sidebar-header">
                 TRANSACTION
             </li>
@@ -72,7 +72,7 @@
                     <li class="list-title">ACCOUNTING</li>
                 </ul>
             </li>
-            
+
 
             <li class="sidebar-item">
                 <a href="#purchasing" data-toggle="collapse" class="sidebar-link collapsed">
@@ -82,6 +82,8 @@
                 </a>
                 <ul id="purchasing" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PURCHASING</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/purchasing/sites">SITE</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/purchasing/supplier">SUPPLIER</a></li>
                 </ul>
             </li>
 
@@ -138,71 +140,7 @@
                     </span>
                 </a>
             </li>
-            
-            {{-- <li class="sidebar-header">
-                USER
-            </li>
-            <li class="sidebar-item">   
-                <a href="#employee_dashboard" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-tachometer-alt"></i> <span class="align-middle">MAIN</span>
-                    </span>
-                </a>
-                <ul id="employee_dashboard" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
-                    <li class="list-title">MAIN</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee/dashboard">OVERVIEW</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee/reimbursement">APPLY FOR REIMBURSEMENT</a></li>
-                </ul>
 
-                <a href="#overtime_application" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-user-clock"></i> <span class="align-middle">OVERTIME APPLICATION</span>
-                    </span>
-                </a>
-                <ul id="overtime_application" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
-                    <li class="list-title">OVERTIME APPLICATION</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee/overtime_application">APPLY FOR OVERTIME</a></li>
-                </ul>
-
-                <a href="#leave_application" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-calendar-times"></i> <span class="align-middle">LEAVE APPLICATION</span>
-                    </span>
-                </a>
-                <ul id="leave_application" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">LEAVE APPLICATION</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee/leave_application">APPLY FOR LEAVE</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee/leave_management">LEAVE MANAGEMENT</a></li>
-                </ul>
-
-                <a href="#timekeeping_application" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-clock"></i> <span class="align-middle">TIMEKEEPING APPLICATION</span>
-                    </span>
-                </a>
-                <ul id="timekeeping_application" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">TIMEKEEPING APPLICATION</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/masterlist/employee">EMPLOYEE TIMESHEET</a></li>
-                </ul>
-                <a href="#leave_monetization" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-money-bill"></i> <span class="align-middle">LEAVE MONETIZATION APPLICATION</span>
-                    </span>
-                </a>
-                <ul id="leave_monetization" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">LEAVE MONETIZATION APPLICATION</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee/leave_monetization">APPLY FOR LEAVE MONETIZATION</a></li>
-                </ul>
-                <a href="#user_reports" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-file-contract"></i> <span class="align-middle">REPORTS</span>
-                    </span>
-                </a>
-                <ul id="user_reports" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">REPORTS</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee/employee_reports">EMPLOYEE REPORTS</a></li>
-                </ul>
-            </li> --}}
         </ul>
     </div>
 </nav>

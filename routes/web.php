@@ -13,36 +13,56 @@ use App\Events\FormSubmitted;
 |
 */
 Route::group(['middleware' => ['auth']], function() {
-    
+
     Route::get('/', function () {
         // return view('backend.pages.dashboard');
         return view('backend.pages.payroll.transaction.employee.dashboard');
     });
-    
+
     Route::get('/dashboard', function () {
         return view('backend.pages.payroll.transaction.employee.dashboard');
     });
-    
+
     Route::group(['prefix' => '/masterlist'], function() {
         Route::group(['prefix' => '/employee'], function (){
             Route::get              ('/',                        'EmployeeInformationController@masterlist'                     )->name('employee_masterlist');
             Route::get              ('/get',                     'EmployeeInformationController@getmasterlist'                  )->name('get_data');
         });
     });
-    
+
     Route::group(['prefix' => '/api'], function (){
         Route::group(['prefix' => '/leave-type'], function (){
             Route::post         ('/getData',                     'LeaveTypeController@getData'                                  )->name('get_data_leave_type');
         });
     });
-    
+
+    Route::group(['prefix' => '/purchasing'], function (){
+        Route::group(['prefix' => '/sites'], function (){
+            Route::get          ('/',                            'SiteController@index'                                      )->name('classes');
+            Route::get          ('/get',                         'SiteController@get'                                        )->name('get_classes');
+            Route::post         ('/save',                        'SiteController@store'                                      )->name('save_classes');
+            Route::get          ('/edit/{id}',                   'SiteController@edit'                                       )->name('edit_classes');
+            Route::post         ('/update/{id}',                 'SiteController@update'                                     )->name('update_classes');
+            Route::post         ('/destroy',                     'SiteController@destroy'                                    )->name('destroy_classes');
+        });
+
+        Route::group(['prefix' => '/supplier'], function (){
+            Route::get          ('/',                            'SupplierController@index'                                      )->name('classes');
+            Route::get          ('/get',                         'SupplierController@get'                                        )->name('get_classes');
+            Route::post         ('/save',                        'SupplierController@store'                                      )->name('save_classes');
+            Route::get          ('/edit/{id}',                   'SupplierController@edit'                                       )->name('edit_classes');
+            Route::post         ('/update/{id}',                 'SupplierController@update'                                     )->name('update_classes');
+            Route::post         ('/destroy',                     'SupplierController@destroy'                                    )->name('destroy_classes');
+        });
+    });
+
     Route::group(['prefix' => '/payroll'], function (){
         Route::get          ('/',                                'PayrollController@index'                                      )->name('payroll');
 
         Route::group(['prefix' => '/global'], function() {
             Route::post         ('/getdatesanddays',             'GlobalController@getDateAndDays'                              )->name('get_date_and_days');
         });
-        
+
         Route::group(['prefix' => '/employee-information'], function (){
             Route::get          ('/',                            'EmployeeInformationController@index'                          )->name('employment_information');
             Route::get          ('/get',                         'EmployeeInformationController@get'                            )->name('get_employment_information');
@@ -51,7 +71,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'EmployeeInformationController@update'                         )->name('update_employment_information');
             Route::post         ('/destroy',                     'EmployeeInformationController@destroy'                        )->name('destroy_employment_information');
         });
-        
+
         Route::group(['prefix' => '/201-file'], function (){
             Route::get          ('/',                            'PersonnelFileController@index'                                )->name('employment_information');
             Route::get          ('/get',                         'PersonnelFileController@get'                                  )->name('get_employment_information');
@@ -60,7 +80,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'PersonnelFileController@update'                               )->name('update_employment_information');
             Route::post         ('/destroy',                     'PersonnelFileController@destroy'                              )->name('destroy_employment_information');
         });
-        
+
         Route::group(['prefix' => '/summary'], function() {
             Route::get          ('/',                            'PayrollSummaryController@index'                               )->name('payroll_summary');
             Route::post         ('/save',                        'PayrollSummaryController@save'                                )->name('save_earning_and_deduction');
@@ -83,11 +103,11 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get          ('/get',                         'SSSController@get'                                            )->name('get_sss');
             Route::post         ('/generate',                    'SSSController@generateSSSTable'                               )->name('generate_sss');
         });
-        
+
         Route::group(['prefix' => '/payslip'], function() {
             Route::get          ('/',                            'PayrollSummaryController@payslip'                             )->name('payslip');
         });
-        
+
         Route::group(['prefix' => '/payroll_calendar'], function() {
             Route::get          ('/',                            'PayrollCalendarController@index'                              )->name('payroll_calendar');
             Route::get          ('/get',                         'PayrollCalendarController@get'                                )->name('get_payroll_calendar');
@@ -96,7 +116,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'PayrollCalendarController@update'                             )->name('update_payroll_calendar');
             Route::post         ('/destroy',                     'PayrollCalendarController@destroy'                            )->name('destroy_payroll_calendar');
         });
-        
+
         Route::group(['prefix' => '/company-profile'], function (){
             Route::get          ('/',                            'CompanyProfileController@index'                               )->name('company_profile');
             Route::get          ('/get',                         'CompanyProfileController@get'                                 )->name('get_company_profile');
@@ -105,7 +125,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'CompanyProfileController@update'                              )->name('update_company_profile');
             Route::post         ('/destroy',                     'CompanyProfileController@destroy'                             )->name('destroy_company_profile');
         });
-        
+
         Route::group(['prefix' => '/classes'], function (){
             Route::get          ('/',                            'ClassesController@index'                                      )->name('classes');
             Route::get          ('/get',                         'ClassesController@get'                                        )->name('get_classes');
@@ -114,7 +134,8 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'ClassesController@update'                                     )->name('update_classes');
             Route::post         ('/destroy',                     'ClassesController@destroy'                                    )->name('destroy_classes');
         });
-        
+
+
         Route::group(['prefix' => '/department'], function (){
             Route::get          ('/',                            'DepartmentsController@index'                                  )->name('department');
             Route::get          ('/get',                         'DepartmentsController@get'                                    )->name('get_department');
@@ -123,7 +144,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'DepartmentsController@update'                                 )->name('update_department');
             Route::post         ('/destroy',                     'DepartmentsController@destroy'                                )->name('destroy_department');
         });
-        
+
         Route::group(['prefix' => '/withholding_tax'], function (){
             Route::get          ('/',                            'WithholdingTaxController@index'                               )->name('withholding_tax');
             Route::get          ('/get',                         'WithholdingTaxController@get'                                 )->name('get_withholding_tax');
@@ -132,7 +153,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'WithholdingTaxController@update'                              )->name('update_withholding_tax');
             Route::post         ('/destroy',                     'WithholdingTaxController@destroy'                             )->name('destroy_withholding_tax');
         });
-        
+
         Route::group(['prefix' => '/position'], function (){
             Route::get          ('/',                            'PositionsController@index'                                    )->name('position');
             Route::get          ('/get',                         'PositionsController@get'                                      )->name('get_position');
@@ -150,7 +171,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'LeaveTypeController@update'                                   )->name('update_leave_type');
             Route::post         ('/destroy',                     'LeaveTypeController@destroy'                                  )->name('destroy_position');
         });
-        
+
         Route::group(['prefix' => '/earnings'], function (){
             Route::get          ('/',                            'EarningsController@index'                                     )->name('earnings');
             Route::get          ('/get',                         'EarningsController@get'                                       )->name('get_earnings');
@@ -159,7 +180,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'EarningsController@update'                                    )->name('update_earnings');
             Route::post         ('/destroy',                     'EarningsController@destroy'                                   )->name('destroy_earnings');
         });
-        
+
         Route::group(['prefix' => '/deductions'], function (){
             Route::get          ('/',                            'DeductionsController@index'                                   )->name('deductions');
             Route::get          ('/get',                         'DeductionsController@get'                                     )->name('get_deductions');
@@ -168,7 +189,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'DeductionsController@update'                                  )->name('update_deductions');
             Route::post         ('/destroy',                     'DeductionsController@destroy'                                 )->name('destroy_deductions');
         });
-        
+
         Route::group(['prefix' => '/work_assignments'], function (){
             Route::get          ('/',                            'WorkAssignmentsController@index'                              )->name('work_assignments');
             Route::get          ('/get',                         'WorkAssignmentsController@get'                                )->name('get_work_assignments');
@@ -177,7 +198,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'WorkAssignmentsController@update'                             )->name('update_work_assignments');
             Route::post         ('/destroy',                     'WorkAssignmentsController@destroy'                            )->name('destroy_work_assignments');
         });
-        
+
         Route::group(['prefix' => '/scheduling'], function (){
             Route::get          ('/',                                'SchedulingsController@index'                              )->name('scheduling');
             Route::get          ('/get/{department}/{first}/{last}', 'SchedulingsController@get'                                )->name('get_scheduling');
@@ -185,7 +206,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/copy_schedule',                   'SchedulingsController@copy_schedule'                      )->name('copy_schedule');
             Route::post         ('/paste_schedule',                  'SchedulingsController@paste_schedule'                     )->name('paste_schedule');
         });
-        
+
         Route::group(['prefix' => '/time_logs'], function (){
             Route::get          ('/',                                 'TimeLogsController@index'                                )->name('time_logs');
             Route::get          ('/get/{department}/{first}/{last}',  'TimeLogsController@get'                                  )->name('get_time_logs');
@@ -232,7 +253,7 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
     Route::group(['prefix' => '/settings'], function (){
-        
+
         Route::group(['prefix' => '/apps'], function (){
             Route::get          ('/',                            'AppController@index'                                          )->name('classes');
             Route::get          ('/get',                         'AppController@get'                                            )->name('get_classes');
