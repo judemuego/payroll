@@ -25,6 +25,8 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('/plugins/onscan.js')}}" ></script>
+    <script src="{{asset('/plugins/onscan.min.js')}}" ></script>
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="/js/backend/pages/masterlist/employee.js"></script>
 @endsection

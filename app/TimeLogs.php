@@ -30,4 +30,12 @@ class TimeLogs extends Model
         'created_by',
         'updated_by',
     ];
+    
+    public function employee() {
+        return $this->belongsTo(EmployeeInformation::class, 'employee_id');
+    }
+
+    public function image() {
+        return $this->belongsTo(ImageUpload::class, 'employee_id');
+    }
 }

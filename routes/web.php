@@ -353,3 +353,16 @@ Route::post('change-password', 'UserController@changepass')->name('change.passwo
 Route::post('change-photo', 'UserController@changePicture')->name('change.picture');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+Route::get('/attendance', function () {
+    return view('frontend.pages.attendance');
+});
+
+Route::group(['prefix' => 'front'], function() {
+    Route::group(['prefix' => 'attendance'], function() {
+        Route::get          ('/get',                            'AttendanceController@get'                                        )->name('get');
+        Route::post         ('/save',                           'AttendanceController@store'                                      )->name('save');
+        Route::get         ('/get_employee/{rfid}',                           'AttendanceController@get_employee'                                      )->name('get');
+    });
+});
