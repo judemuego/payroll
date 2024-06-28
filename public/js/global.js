@@ -21,7 +21,7 @@ var scion = {
     record: {
         new(customFunc) {
             record_id = null;
-            
+
             if(module_type === "custom") {
                 $('.form-record')[0].reset();
                 scion.create.sc_modal(modal_content+"_form", page_title).show(modalShowFunction);
@@ -40,10 +40,10 @@ var scion = {
             }
             else if(module_type === "settings") {
                 scion.create.modal('NEW RECORD', 'form').show();
-            } 
-            
+            }
+
             actions = 'save';
-            
+
             if(typeof(customFunc) != "undefined"){
                 customFunc();
             }
@@ -57,7 +57,7 @@ var scion = {
                         success(response.last_record);
                     }
                     toastr.success('Record Saved!');
-                    
+
                     if(module_type === "maintenance") {
                         scion.create.modal().hide();
                     }
@@ -92,7 +92,7 @@ var scion = {
                     else if(module_type === "transaction") {
                         scion.centralized_button(false, false, false, true);
                     }
-                    
+
                     form_data = {};
                 })
                 .fail(function(response) {
@@ -108,7 +108,7 @@ var scion = {
             }
         },
         edit(url, id) {
-            
+
             var form_id = $('.form-record')[0].id;
             actions = 'update';
 
@@ -126,7 +126,7 @@ var scion = {
                     if(lookup_type !== "sub" ) {
                         $.each(data, function() {
                             $.each(this, function(k, v) {
-                                
+
                                 if($('#'+k).length !== 0) {
                                     if($('#'+k)[0].type === 'checkbox') {
                                         $('#'+k).prop('checked', v === 1?true:false);
@@ -186,8 +186,8 @@ var scion = {
                     }
                 }
             });
-            
-            
+
+
             if(module_type === "custom") {
                 if(lookup_type !== "sub") {
                     scion.create.sc_modal(modal_content+"_form", "UPDATE " + page_title).show(modalShowFunction);
@@ -197,7 +197,7 @@ var scion = {
             }
         },
         delete(generateDeleteItems) {
-            
+
             if(typeof(generateDeleteItems) != 'undefined') {
                 generateDeleteItems();
             }
@@ -294,8 +294,8 @@ var scion = {
                     columns: column
                 });
             }
-            
-            
+
+
             table.clear().draw();
         },
         modal(title, type) {
@@ -326,13 +326,13 @@ var scion = {
         sc_modal(id, title, getLookup) {
             var modal = $('.sc-modal');
             $('#' + id + ' .sc-title-bar').html(title);
-            
+
             return {
                 show: function(modalShowFunction) {
                     if(typeof(getLookup) != "undefined"){
                         getLookup();
                     }
-                    
+
                     if(typeof(modalShowFunction) != "undefined") {
                         modalShowFunction();
                     }
@@ -387,17 +387,17 @@ var scion = {
     table: {
         checkOne() {
             event.stopPropagation();
-            
+
             scion.table.checked.getAllSelected();
             // FOR UNCHECKING THE MAIN CHECKBOX
             $('.multi-checkbox').prop('checked', $('.single-checkbox:checked').length !== $('.single-checkbox').length?false:true);
-            
+
         },
         checkAll() {
             event.stopPropagation();
 
             $('.single-checkbox').prop('checked', $('.multi-checkbox')[0].checked === true? true:false);
-            
+
             scion.table.checked.getAllSelected();
         },
         checked: {
@@ -429,7 +429,7 @@ var scion = {
             $('#'+id).addClass('active');
             $('.form-tab').css('display', 'none');
             $('#'+id+'_tab').css('display', 'block');
-            
+
             if(typeof(extra) != "undefined"){
                 extra();
             }

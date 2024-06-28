@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSuppliersTable extends Migration
+class CreateChartOfAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,22 @@ class CreateSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
+        Schema::create('chart_of_accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('supplier_name');
-            $table->string('contact_no');
-            $table->string('contact_person');
-            $table->string('address');
-            $table->string('tin_no');
-            $table->string('payment_terms');
-            $table->string('bank_name')->nullable();
-            $table->string('bank_account')->nullable();
+            $table->string('account_number');
+            $table->string('account_name');
+            $table->unsignedBigInteger('account_type');
+            $table->string('description');
+            $table->string('normal_balance');
             $table->unsignedBigInteger('workstation_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('account_type')
+                ->references('id')
+                ->on('account_types');
 
             $table->foreign('workstation_id')
                 ->references('id')
@@ -50,6 +51,6 @@ class CreateSuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('chart_of_accounts');
     }
 }

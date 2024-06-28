@@ -8,7 +8,7 @@
 
 @section('left-content')
     @include('backend.partial.component.tab_list', [
-        'id'=>'employee_menu', 
+        'id'=>'employee_menu',
         'data'=>array(
             array('id'=>'general', 'title'=>'GENERAL', 'icon'=>' fas fa-file-alt', 'active'=>true, 'disabled'=>false, 'function'=>true),
             array('id'=>'employment', 'title'=>'EMPLOYMENT', 'icon'=>' fas fa-portrait', 'active'=>false, 'disabled'=>true, 'function'=>true),
