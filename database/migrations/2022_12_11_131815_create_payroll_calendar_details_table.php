@@ -20,6 +20,7 @@ class CreatePayrollCalendarDetailsTable extends Migration
             $table->date('first_payment');
             $table->string('start_of_week');
             $table->string('end_of_week');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('payroll_calendar_header_id')

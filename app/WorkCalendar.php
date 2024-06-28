@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WorkCalendar extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'id',
         'sunday_start_time',

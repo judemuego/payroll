@@ -24,6 +24,7 @@ class CreateEmploymentsTable extends Migration
             $table->string('tax_rate')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('employee_id')

@@ -22,6 +22,7 @@ class CreateTimeLogApprovalsTable extends Migration
             $table->unsignedBigInteger('workstation_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('employee_id')

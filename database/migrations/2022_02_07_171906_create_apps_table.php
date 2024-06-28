@@ -24,6 +24,7 @@ class CreateAppsTable extends Migration
             $table->boolean('status');
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

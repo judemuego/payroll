@@ -507,6 +507,6 @@ var scion = {
 
 $('body').delegate('form input[type="text"], form textarea', 'keyup', function() {
     this.value = this.value.toUpperCase();
-}).delegate('form', 'submit', function() {
+}).delegate('form:not(.not)', 'submit', function() {
     event.preventDefault();
 });;

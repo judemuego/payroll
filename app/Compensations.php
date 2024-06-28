@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Compensations extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'annual_salary',
         'monthly_salary',

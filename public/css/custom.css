@@ -124,14 +124,14 @@ a.sidebar-link .item {
 
 #sidebar {
     min-width: 7px;
-    width: 100px;
-    padding: 10px;
+    width: 75px;
+    /* padding: 10px; */
     z-index: 1001;
 }
 
 .sidebar-content {
     background: rgb(50 130 184);
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 a.sidebar-link {
@@ -182,12 +182,12 @@ a.sidebar-link .item {
 .sidebar-dropdown {
     position: absolute;
     z-index: 1000;
-    margin-left: 79px;
+    margin-left: 71px;
     margin-top: -58px;
     background: rgb(106 106 106 / 90%);
     width: 230px;
     border: 0px;
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 #sidebar:not(.toggled) .sidebar-dropdown a.sidebar-link {
@@ -564,8 +564,8 @@ div#datatables_processing {
 .header-block {
     background: #2e2e2e;
     padding: 0px !important;
-    border-radius: 8px;
-    margin: 10px 5px;
+    /* border-radius: 8px;
+    margin: 10px 5px; */
 }
 
 .sidebar-user {
@@ -805,13 +805,17 @@ span.custom-modal-close {
     height: 100% !important;
     position: fixed;
     z-index: 100;
-    width: calc(100% - 100px);
-    margin-top: -15px;
+    width: calc(100% - 71px);
+    margin-top: -20px;
     display: none;
 }
 
+.card {
+    box-shadow: none !important;
+}
+
 .sc-modal-content {
-    height: calc(100% - 130px);
+    height: calc(100% - 104px) !important;
     width: 100%;
     background: rgba(0,0,0,0.5);
     overflow: auto;

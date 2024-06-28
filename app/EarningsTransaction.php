@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EarningsTransaction extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'employee_id',
         'sequence_no',

@@ -143,6 +143,95 @@
         </div>
     </div>
 
+    
+	<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Change Password</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body m-3">
+					<form method="POST" action="{{ route('change.password') }}" class="not">
+						@csrf
+
+						@foreach ($errors->all() as $error)
+							<p class="text-danger">{{ $error }}</p>
+						@endforeach
+
+						<div class="form-group row">
+							<label for="password" class="col-md-4 col-form-label text-md-right">Current Password</label>
+
+							<div class="col-md-6">
+								<input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="password" class="col-md-4 col-form-label text-md-right">New Password</label>
+
+							<div class="col-md-6">
+								<input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="password" class="col-md-4 col-form-label text-md-right">New Confirm Password</label>
+
+							<div class="col-md-6">
+								<input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<div class="col-md-8 offset-md-4">
+								<button type="submit" class="btn btn-primary not">
+									Update Password
+								</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="changePhotoModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Change Profile Picture</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body m-3">
+					<form method="POST" action="{{ route('change.picture') }}" enctype="multipart/form-data" class="not">
+						@csrf
+						<div class="form-group row">
+							<input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}"/>
+							<label class="col-form-label col-sm-3 text-sm-right">Profile Picture</label>
+							<div class="col-sm-9">
+								<input type="file" name="picture" class="form-control">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<div class="col-md-8 offset-md-4">
+								<button type="submit" class="btn btn-primary ">
+									Upload
+								</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
     <script src="{{ URL::asset('backend/js/app.js') }}"></script>
 
     <script src="{{asset('/plugins/cropimg/cropzee.js')}}" ></script>

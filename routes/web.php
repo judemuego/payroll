@@ -19,6 +19,11 @@ Route::group(['middleware' => ['auth']], function() {
         return view('backend.pages.payroll.transaction.employee.dashboard');
     });
 
+    Route::get('/po-sample', function () {
+        // return view('backend.pages.dashboard');
+        return view('backend.partial.purchase_order');
+    });
+
     Route::get('/dashboard', function () {
         return view('backend.pages.payroll.transaction.employee.dashboard');
     });
@@ -342,5 +347,9 @@ Route::post('/sender', function() {
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Auth::routes();
+
+
+Route::post('change-password', 'UserController@changepass')->name('change.password');
+Route::post('change-photo', 'UserController@changePicture')->name('change.picture');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

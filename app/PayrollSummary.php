@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PayrollSummary extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         "sequence_no",
         "schedule_type",
