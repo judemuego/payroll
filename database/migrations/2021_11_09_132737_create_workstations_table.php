@@ -20,6 +20,7 @@ class CreateWorkstationsTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
+            $table->softDeletes();
             $table->timestamps();
             
             $table->foreign('company_id')

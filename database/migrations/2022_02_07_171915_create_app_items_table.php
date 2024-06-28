@@ -22,6 +22,7 @@ class CreateAppItemsTable extends Migration
             $table->boolean('status');
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('app_id')

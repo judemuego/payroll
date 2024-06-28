@@ -23,6 +23,7 @@ class CreatePayrollCalendarHeadersTable extends Migration
             $table->integer('status')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
+            $table->softDeletes();
             $table->timestamps();
 
             

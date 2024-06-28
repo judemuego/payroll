@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Leaves extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'leave_type',
         'total_hours',

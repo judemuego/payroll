@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SSS extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         "range_1",
         "range_2",
