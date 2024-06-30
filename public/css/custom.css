@@ -737,7 +737,7 @@ h3.group-title {
 .custom-modal {
     position: fixed;
     width: 100%;
-    height: calc(100% - 155px);
+    height: calc(100% - 104px);
     margin-top: -20px;
     background: rgba(0,0,0,0.5);
     z-index: 10;
