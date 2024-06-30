@@ -688,7 +688,7 @@ table#lookup tbody>tr:hover {
 }
 
 /* CONTROLS */
-.form-control {
+.form-control:not(type='color') {
     background: #fff;
     border: 1px #ccc solid;
     font-size: 15px;

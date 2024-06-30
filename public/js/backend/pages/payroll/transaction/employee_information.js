@@ -15,7 +15,7 @@ $(function() {
 
     onScan.attachTo(document, {
         suffixKeyCodes: [13],
-        reactToPaste: true,
+        reactToPaste: false,
         onScan: function(sCode, iQty) {
             if(record_id !== null) {
                 $('#rfid').val(sCode);
