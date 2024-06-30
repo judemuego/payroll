@@ -19,7 +19,7 @@ class LeaveTypeController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $validatedData = $request->validate([
             'leave_name' => 'required|unique:leave_types',
             'chart_id' => 'required'
         ]);

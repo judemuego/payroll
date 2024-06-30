@@ -33,13 +33,13 @@ $(function() {
                     return '<span class="expandable" title="' + data + '">' + data + '</span>';
                 }
             },
-            {
-                data: "account",
-                title: "ACCOUNT",
-                render: function(data, type, row, meta) {
-                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
-                }
-            },
+            // {
+            //     data: "account",
+            //     title: "ACCOUNT",
+            //     render: function(data, type, row, meta) {
+            //         return '<span class="expandable" title="' + data + '">' + data + '</span>';
+            //     }
+            // },
             {
                 data: "chart.account_name",
                 title: "CHART OF ACCOUNT",

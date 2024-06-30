@@ -31,18 +31,12 @@ class WithholdingTaxController extends Controller
             'fix_tax' => ['required'],
             'rate_on_excess' => ['required'],
         ]);
-        
-        if (!WithholdingTax::where('frequency', $validatedData['frequency'])->exists()) {
-            
-            $request['workstation_id'] = Auth::user()->workstation_id;
-            $request['created_by'] = Auth::user()->id;
-            $request['updated_by'] = Auth::user()->id;
-        
-            WithholdingTax::create($request->all());
-        }
-        else {
-            return false;
-        }
+    
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+    
+        WithholdingTax::create($request->all());
     }
 
     public function edit($id)

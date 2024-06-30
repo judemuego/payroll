@@ -164,7 +164,7 @@ class PayrollSummaryController extends Controller
 
         foreach($schedule as $sched) {
             $no_of_employee = Employment::where('payroll_calendar_id', $sched->type)->count();
-            $hourly_rate = Compensations::firstOrFail()->hourly_salary;
+            $hourly_rate = Compensations::first()->hourly_salary;
             
             if($sched->type === 1) {
                 $startdate = $sched->start_date;

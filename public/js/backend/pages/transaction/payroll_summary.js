@@ -35,7 +35,7 @@ $(function() {
             'payroll_summary_table',  
             module_url + '/get', 
             [
-                { data: "schedule_type", title:"SCHEDULE_TYPE", render: function(data, type, row, meta) {
+                { data: "schedule_type", title:"SCHEDULE TYPE", render: function(data, type, row, meta) {
                     switch(row.schedule_type) {
                         case 1:
                             return "MONTHLY";
