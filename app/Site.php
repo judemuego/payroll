@@ -19,4 +19,9 @@ class Site extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(EmployeeInformation::class, 'person_in_charge');
+    }
 }

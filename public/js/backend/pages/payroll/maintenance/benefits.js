@@ -41,6 +41,13 @@ $(function() {
                 }
             },
             {
+                data: "chart.account_name",
+                title: "CHART OF ACCOUNT",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
                 data: "type",
                 title: "TYPE",
                 render: function(data, type, row, meta) {
@@ -85,6 +92,7 @@ function generateData() {
         benefits: $('#benefits').val(),
         description: $('#description').val(),
         account: $('input#account').val(),
+        chart_id: $('#chart_id').val(),
         type: $('#type').val()
     };
 

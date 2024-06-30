@@ -31,10 +31,15 @@ $(function() {
                 }
             },
             {
-                data: "person_in_charge",
+                data: "id",
                 title: "Person in Charge",
                 render: function(data, type, row, meta) {
-                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                    if (row.employee && row.employee.firstname && row.employee.lastname) {
+                        var fullName = row.employee.firstname + ' ' + row.employee.lastname;
+                        return '<span class="expandable" title="' + fullName + '">' + fullName + '</span>';
+                    } else {
+                        return '<span class="expandable" title="N/A">N/A</span>';
+                    }
                 }
             }
         ], 'Bfrtip', []

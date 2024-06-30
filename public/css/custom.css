@@ -9,17 +9,17 @@
 
   /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
 }
 
   /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: #888;
 }
 
   /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
     cursor: pointer !important;
 }
 
@@ -737,7 +737,7 @@ h3.group-title {
 .custom-modal {
     position: fixed;
     width: 100%;
-    height: calc(100% - 155px);
+    height: calc(100% - 104px);
     margin-top: -20px;
     background: rgba(0,0,0,0.5);
     z-index: 10;
@@ -982,7 +982,7 @@ table.dataTable thead {
         width: 100% !important;
         min-width: auto !important;
     }
-    
+
     .sidebar {
         min-width: auto !important;
         margin: 0px !important;

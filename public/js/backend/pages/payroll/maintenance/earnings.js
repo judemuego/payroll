@@ -30,6 +30,7 @@ $(function() {
                 }
             },
             { data: "multiplier", title: "MULTIPLIER" },
+            { data: "chart.account_name", title: "CHART OF ACCOUNT" },
             { data: "type", title: "TYPE", render: function(data, type, row, meta) {
                 var html = "";
                 if(row.type === "earning") {
@@ -91,6 +92,7 @@ function generateData() {
         _token: _token,
         name: $('#name').val(),
         code: $('#code').val(),
+        chart_id: $('#chart_id').val(),
         description: $('#description').val(),
         multiplier: $('#multiplier').val(),
         taxable: $('#taxable').val(),

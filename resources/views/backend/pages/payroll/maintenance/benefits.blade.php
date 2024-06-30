@@ -23,6 +23,7 @@
                                 <th>#</th>
                                 <th>BENEFITS</th>
                                 <th>DESCRIPTION</th>
+                                <th>CHART</th>
                                 <th>ACCOUNT</th>
                                 <th>TYPE</th>
                             </tr>
@@ -56,6 +57,15 @@
                     <div class="form-group col-md-12 account">
                         <label>ACCOUNT</label>
                         <input type="text" class="form-control" id="account" name="account" placeholder="ACCOUNT"/>
+                    </div>
+                    <div class="form-group col-md-12 chart_id">
+                        <label>CHART OF ACCOUNT</label>
+                        <select name="chart_id" id="chart_id" class="form-control">
+                            <option value=""></option>
+                            @foreach ($record as $item)
+                            <option value="{{$item->id}}">{{$item->account_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group col-md-12 type">
                         <label>TYPE</label>

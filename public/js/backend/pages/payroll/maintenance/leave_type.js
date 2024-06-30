@@ -39,6 +39,13 @@ $(function() {
                 }
             },
             {
+                data: "chart.account_name",
+                title: "CHART OF ACCOUNT",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
                 data: "paid_leave",
                 title: "PAID LEAVE",
                 render: function(data, type, row, meta) {

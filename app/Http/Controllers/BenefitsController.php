@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Benefits;
+use App\ChartOfAccount;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -11,12 +12,13 @@ class BenefitsController extends Controller
     public function index()
     {
         $benefits = Benefits::orderBy('id', 'desc')->get();
-        return view('backend.pages.payroll.maintenance.benefits', compact('benefits'));
+        $record = ChartOfAccount::orderBy('id', 'desc')->get();
+        return view('backend.pages.payroll.maintenance.benefits', compact('benefits', 'record'));
     }
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Benefits::orderBy('id', 'desc')->get())
+            return datatables()->of(Benefits::with('chart')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -26,7 +28,8 @@ class BenefitsController extends Controller
     {
         $benefits = $request->validate([
             'benefits' => ['required'],
-            'description' => ['required']
+            'description' => ['required'],
+            'chart_id' => ['required']
         ]);
 
         

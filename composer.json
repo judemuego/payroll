@@ -14,7 +14,7 @@
         "laravel/tinker": "^1.0",
         "league/fractal": "^0.19.2",
         "pusher/pusher-php-server": "~3.0",
-        "spatie/laravel-permission": "3.17",
+        "spatie/laravel-permission": "^3.18",
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {

@@ -17,6 +17,7 @@ class CreateLeavesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('leave_type');
             $table->integer('total_hours');
+            $table->integer('chart_id')->nullable();
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
@@ -26,15 +27,15 @@ class CreateLeavesTable extends Migration
             $table->foreign('leave_type')
                 ->references('id')
                 ->on('leave_types');
-                
+
             $table->foreign('employee_id')
                 ->references('id')
                 ->on('employees');
-            
+
             $table->foreign('created_by')
                 ->references('id')
                 ->on('users');
-                
+
             $table->foreign('updated_by')
                 ->references('id')
                 ->on('users');

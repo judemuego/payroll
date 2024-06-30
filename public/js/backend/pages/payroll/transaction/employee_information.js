@@ -8,11 +8,11 @@ $(function() {
 
     scion.centralized_button(true, false, true, true);
     scion.action.tab(tab_active);
-    
+
     $("#profile_img").cropzee({
         allowedInputs: ['png','jpg','jpeg']
     });
-    
+
     onScan.attachTo(document, {
         suffixKeyCodes: [13],
         reactToPaste: true,
@@ -41,16 +41,16 @@ function success(record) {
             switch(module_content) {
                 case 'leaves':
                     $('#leaves_table').DataTable().draw();
-                    
+
                     break;
                 case 'work-calendar':
                     $('#edit_schedule')[0].click();
                     scion.centralized_button(true, true, true, true);
                     break;
                 case 'compensation':
-                    $('#government_mandated_benefits').val(''); 
-                    $('#government_mandated_benefits_amount').val(''); 
-                    $('#other_company_benefits').val(''); 
+                    $('#government_mandated_benefits').val('');
+                    $('#government_mandated_benefits_amount').val('');
+                    $('#other_company_benefits').val('');
                     $('#other_company_benefits_amount').val('');
                     break;
             }
@@ -70,7 +70,7 @@ function delete_success() {
             $('#'+form_id)[0].reset();
             actions = 'save';
             scion.centralized_button(true, false, true, true);
-            
+
             break;
         case 'employment':
             $('#classes_id').val('');
@@ -225,7 +225,7 @@ function general_func() {
     if(record_id !== '') {
         actions = 'update';
     }
-    
+
     scion.centralized_button(false, false, false, true);
 }
 
@@ -242,14 +242,14 @@ function leaves_func() {
     actions = 'update';
     module_type = 'sub_transaction';
     scion.centralized_button(true, false, true, true);
-    
+
     if ($.fn.DataTable.isDataTable('#leaves_table')) {
         $('#leaves_table').DataTable().destroy();
     }
 
     scion.create.table(
-        'leaves_table',  
-        module_url + '/get/' + record_id, 
+        'leaves_table',
+        module_url + '/get/' + record_id,
         [
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";
@@ -286,7 +286,7 @@ function compensation_func() {
 
     var government_mandated_benefits = "<option value=''></option>";
     var other_company_benefits = "<option value=''></option>";
-    
+
     if ($.fn.DataTable.isDataTable('#government_mandated_benefits_table') && $.fn.DataTable.isDataTable('#other_company_benefits_amount_table')) {
         $('#government_mandated_benefits_table').DataTable().destroy();
         $('#other_company_benefits_amount_table').DataTable().destroy();
@@ -307,8 +307,8 @@ function compensation_func() {
     });
 
     scion.create.table(
-        'government_mandated_benefits_table',  
-        module_url + '/get-gov-record/' + record_id, 
+        'government_mandated_benefits_table',
+        module_url + '/get-gov-record/' + record_id,
         [
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";
@@ -319,10 +319,10 @@ function compensation_func() {
             { data: "amount", title: "AMOUNT" },
         ], 'Bfrtip', []
     );
-    
+
     scion.create.table(
-        'other_company_benefits_amount_table',  
-        module_url + '/get-com-record/' + record_id, 
+        'other_company_benefits_amount_table',
+        module_url + '/get-com-record/' + record_id,
         [
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";

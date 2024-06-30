@@ -1,23 +1,15 @@
-@extends('backend.master.index')
 
-@section('title', 'PURCHASE ORDER')
-
-@section('breadcrumbs')
-    <span>TRANSACTION</span> / <span class="highlight">PURCHASE ORDER</span>
-@endsection
-
-@section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">PURCHASE ORDER: TRANSACTION SCREEN</h5>
-            </div>
-            @include('backend.partial.flash-message')
-            <div class="col-12">
-                <div class="card-body">
-                    <table id="purchase_orders_table" class="table table-striped" style="width:100%">
-                    </table>
+<div id="preparation_tab" class="form-tab">
+    <h3>PREPARATION TAB</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                @include('backend.partial.flash-message')
+                <div class="col-12">
+                    <div class="card-body">
+                        <table id="purchase_orders_table" class="table table-striped" style="width:100%">
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,11 +18,11 @@
 
 @section('sc-modal')
 @parent
-<div class="sc-modal-content" id="purchase_orders_form">
-    <div class="sc-modal-dialog modal-lg">
+<div class="sc-modal-content" id="preparation_form">
+    <div class="sc-modal-dialog">
         <div class="sc-modal-header">
             <span class="sc-title-bar"></span>
-            <span class="sc-close" onclick="scion.create.sc_modal('purchase_orders_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('preparation_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
         </div>
         <div class="sc-modal-body">
             <form method="post" id="classForm" class="form-record">
@@ -117,10 +109,4 @@
         </div>
     </div>
 </div>
-@endsection
-@endsection
-
-@section('scripts')
-    <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="/js/backend/pages/purchasing/transaction/purchase_order.js"></script>
 @endsection

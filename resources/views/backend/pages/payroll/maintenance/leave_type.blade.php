@@ -48,6 +48,15 @@
                         <label for="">Normal Entitlement</label>
                         <input type="number" class="form-control" id="normal_entitlement" value="0" min="0" name="normal_entitlement" required/>
                     </div>
+                    <div class="form-group col-md-12 chart_id">
+                        <label>CHART OF ACCOUNT</label>
+                        <select name="chart_id" id="chart_id" class="form-control">
+                            <option value=""></option>
+                            @foreach ($record as $item)
+                            <option value="{{$item->id}}">{{$item->account_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group col-6">
                         <label>Paid Leave</label>
                         <fieldset id="paid_leave">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Earnings;
+use App\ChartOfAccount;
 use Illuminate\Http\Request;
 
 class EarningsController extends Controller
@@ -11,12 +12,13 @@ class EarningsController extends Controller
     
     public function index()
     {
-        return view('backend.pages.setup.payroll_setup.earnings');
+        $record = ChartOfAccount::orderBy('id', 'desc')->get();
+        return view('backend.pages.setup.payroll_setup.earnings', compact('record'));
     }
     
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Earnings::orderBy('id', 'desc')->get())
+            return datatables()->of(Earnings::with('chart')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -28,6 +30,7 @@ class EarningsController extends Controller
             'name' => 'required',
             'code' => 'required|unique:earnings',
             'type' => 'required',
+            'chart_id' => 'required',
             'status' => 'required',
         ]);
         
