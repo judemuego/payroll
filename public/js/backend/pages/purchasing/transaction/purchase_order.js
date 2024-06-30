@@ -29,6 +29,8 @@ function success(record) {
             switch(module_content) {
                 case 'leaves':
                     $('#leaves_table').DataTable().draw();
+                    $('#purchase_orders_table').DataTable().draw();
+                    modalHideFunction();
 
                     break;
             }

@@ -23,7 +23,7 @@ class CreatePurchaseOrderRemarksTable extends Migration
 
             $table->foreign('purchase_order_id')
                 ->references('id')
-                ->on('purchase_order_id');
+                ->on('purchase_orders');
 
             $table->foreign('employee_id')
                 ->references('id')

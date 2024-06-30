@@ -19,6 +19,7 @@ class CreateBenefitsTable extends Migration
             $table->string('description')->nullable();
             $table->string('account');
             $table->string('type');
+            $table->integer('chart_id')->nullable();
             $table->unsignedBigInteger('workstation_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
@@ -32,7 +33,7 @@ class CreateBenefitsTable extends Migration
             $table->foreign('created_by')
                 ->references('id')
                 ->on('users');
-                
+
             $table->foreign('updated_by')
                 ->references('id')
                 ->on('users');

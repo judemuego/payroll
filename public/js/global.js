@@ -64,7 +64,6 @@ var scion = {
                     else if(module_type === "transaction") {
                         scion.centralized_button(false, false, false, true);
                     } else if(module_type === "custom") {
-                        console.log('test');
                         modalHideFunction();
                     }
 
@@ -94,9 +93,11 @@ var scion = {
 
                     if(module_type === "maintenance") {
                         scion.create.modal().hide();
-                    }
-                    else if(module_type === "transaction") {
+                    } else if(module_type === "transaction") {
                         scion.centralized_button(false, false, false, true);
+                    } else if(module_type === 'custom') {
+                        scion.centralized_button(false, true, true, true);
+                        scion.create.modal().hide();
                     }
 
                     form_data = {};
