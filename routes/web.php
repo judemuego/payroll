@@ -42,6 +42,15 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
     Route::group(['prefix' => '/purchasing'], function (){
+        Route::group(['prefix' => '/purchase_orders'], function (){
+            Route::get          ('/',                            'PurchaseOrderController@index'                                      )->name('classes');
+            Route::get          ('/get',                         'PurchaseOrderController@get'                                        )->name('get_classes');
+            Route::post         ('/save',                        'PurchaseOrderController@store'                                      )->name('save_classes');
+            Route::get          ('/edit/{id}',                   'PurchaseOrderController@edit'                                       )->name('edit_classes');
+            Route::post         ('/update/{id}',                 'PurchaseOrderController@update'                                     )->name('update_classes');
+            Route::post         ('/destroy',                     'PurchaseOrderController@destroy'                                    )->name('destroy_classes');
+        });
+
         Route::group(['prefix' => '/sites'], function (){
             Route::get          ('/',                            'SiteController@index'                                      )->name('classes');
             Route::get          ('/get',                         'SiteController@get'                                        )->name('get_classes');

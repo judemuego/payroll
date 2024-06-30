@@ -63,6 +63,9 @@ var scion = {
                     }
                     else if(module_type === "transaction") {
                         scion.centralized_button(false, false, false, true);
+                    } else if(module_type === "custom") {
+                        console.log('test');
+                        modalHideFunction();
                     }
 
                     form_data = {};

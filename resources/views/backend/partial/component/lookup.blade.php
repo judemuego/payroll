@@ -32,7 +32,7 @@
 
         $('.sc-modal').delegate('#lookup_{{$id}}_table tbody tr','dblclick', function () {
             var data = $('#lookup_{{$id}}_table').DataTable().row(this).data();
-            
+
             scion.record.edit('{{$lookup_module}}/edit/', data.id);
             scion.create.sc_modal('lookup_{{$id}}', '').hide('{{$modal_type}}');
 
@@ -40,7 +40,7 @@
                 scion.centralized_button(false, false, false, true);
             }
             else {}
-            
+
             $('.tab-list-menu-item ').removeAttr('disabled');
 
         });
