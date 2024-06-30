@@ -988,3 +988,16 @@ table.dataTable thead {
         margin: 0px !important;
     }
 }
+
+
+.card-count .title {
+    font-size: 18px;
+    color: #fff;
+    font-family: system-ui;
+}
+
+.card-count .value {
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+}
