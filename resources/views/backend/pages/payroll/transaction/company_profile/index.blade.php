@@ -16,7 +16,8 @@
         'data'=>array(
             array('id'=>'general', 'icon'=>' fas fa-file-alt', 'title'=>'GENERAL', 'active'=>true, 'disabled'=>false, 'function'=>false),
             array('id'=>'visual_appearance', 'icon'=>' fas fa-eye', 'title'=>'VISUAL APPEARANCE', 'active'=>false, 'disabled'=>false, 'function'=>false),
-            array('id'=>'work_calendar', 'icon'=>' fas fa-calendar', 'title'=>'WORK CALENDAR', 'active'=>false, 'disabled'=>false, 'function'=>false)
+            array('id'=>'work_calendar', 'icon'=>' fas fa-calendar', 'title'=>'WORK CALENDAR', 'active'=>false, 'disabled'=>false, 'function'=>false),
+            array('id'=>'account', 'icon'=>' fas fa-list', 'title'=>'ACCOUNT', 'active'=>false, 'disabled'=>false, 'function'=>false)
         )
     ])
 @endsection
@@ -85,6 +86,12 @@
                                     <input type="text" class="form-control" name="tin" id="tin"/>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="form-group details">
+                                    <label>DETAILS</label>
+                                    <textarea name="details" id="details" class="form-control"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div id="visual_appearance_tab" class="form-tab">
@@ -99,6 +106,19 @@
                                     <input id="company_logo" type="file" name="company_logo" class="form-control" onchange="scion.fileView(event)" style="display:none;">
                                     <button class="btn btn-primary" type="button" onclick="$('#company_logo').click()">Select Photo</button>
                                 </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group color">
+                                    <label>COLOR</label>
+                                    <input type="color" class="form-control" name="color" id="color"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>DARK MODE</label>
+                                <select name="dark_mode" id="dark_mode" class="form-control">
+                                    <option value="0">DISABLE</option>
+                                    <option value="1">ENABLE</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -178,6 +198,18 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="account_tab" class="form-tab">
+                        <h3>VISUAL APPEARANCE</h3>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>DARK MODE</label>
+                                <select name="dark_mode" id="dark_mode" class="form-control">
+                                    <option value="0">DISABLE</option>
+                                    <option value="1">ENABLE</option>
+                                </select>
                             </div>
                         </div>
                     </div>
