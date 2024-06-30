@@ -55,9 +55,9 @@
                     <li class="list-title">PAYROLL</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/summary">PAYROLL SUMMARY</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/time_logs">TIME LOGS</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/work_schedule">WORK SCHEDULE</a></li>
+                    {{-- <li class="sidebar-item"><a class="sidebar-link" href="/payroll/work_schedule">WORK SCHEDULE</a></li> --}}
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/scheduling">SCHEDULING</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/project_time">PROJECT TIME</a></li>
+                    {{-- <li class="sidebar-item"><a class="sidebar-link" href="/payroll/project_time">PROJECT TIME</a></li> --}}
                 </ul>
             </li>
 
