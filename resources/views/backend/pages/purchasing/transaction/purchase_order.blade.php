@@ -24,6 +24,7 @@
     </div>
 </div>
 
+
 @section('sc-modal')
 @parent
 <div class="sc-modal-content" id="purchase_orders_form">

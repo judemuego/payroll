@@ -36,17 +36,17 @@
             <form method="post" id="classForm" class="form-record">
                 <div class="row">
                     <div class="form-group col-md-12 account_number">
-                        <label>Account Number</label>
+                        <label>ACCOUNT NUMBER</label>
                         <input type="text" class="form-control" id="account_number" name="account_number"/>
                     </div>
 
                     <div class="form-group col-md-12 account_name">
-                        <label>Account Name</label>
+                        <label>ACCOUNT NAME</label>
                         <input type="text" class="form-control" id="account_name" name="account_name"/>
                     </div>
 
                     <div class="form-group col-md-12 account_type">
-                        <label>Account Type</label>
+                        <label>ACCOUNT TYPE</label>
                         <select name="account_type" id="account_type" class="form-control">
                             @foreach ($account_types as $account_type)
                                 <option value="{{ $account_type->id }}">{{ $account_type->account_type }}</option>
@@ -55,12 +55,12 @@
                     </div>
 
                     <div class="form-group col-md-12 description">
-                        <label>Description</label>
+                        <label>DESCRIPTION</label>
                         <input type="text" class="form-control" id="description" name="description"/>
                     </div>
 
                     <div class="form-group col-md-12 normal_balance">
-                        <label>Account Type</label>
+                        <label>NORMAL BALANCE</label>
                         <select name="normal_balance" id="normal_balance" class="form-control">
                             <option value="CREDIT">CREDIT</option>
                             <option value="DEBIT">DEBIT</option>

@@ -1,14 +1,12 @@
 
 <div id="preparation_tab" class="form-tab">
-    <h3>PREPARATION TAB</h3>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 @include('backend.partial.flash-message')
                 <div class="col-12">
                     <div class="card-body">
-                        <table id="purchase_orders_table" class="table table-striped" style="width:100%">
-                        </table>
+                        <table id="purchase_orders_table" class="table table-striped" style="width:100%"></table>
                     </div>
                 </div>
             </div>
@@ -18,6 +16,9 @@
 
 @section('sc-modal')
 @parent
+
+
+
 <div class="sc-modal-content" id="preparation_form">
     <div class="sc-modal-dialog">
         <div class="sc-modal-header">
@@ -104,6 +105,81 @@
                         <label for="delivery_instruction">Delivery Instruction</label>
                         <input type="text" class="form-control" id="delivery_instruction" name="delivery_instruction"/>
                     </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sc-modal-content" id="preparation_detail_form">
+    <div class="sc-modal-dialog sc-xl">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('preparation_detail_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" class="form-record">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="col-12">
+                                    <table id="purchase_order_detail_table" class="table table-striped" style="width:100%"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sc-modal-content" id="details_form">
+    <div class="sc-modal-dialog">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('details_form').hide('', modalHideFunction_detail())"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" class="form-record">
+                <div class="row">
+
+                    <div class="form-group col-md-12 item">
+                        <label for="item">ITEM</label>
+                        <input type="text" class="form-control" id="item" name="item"/>
+                        <input type="hidden" class="form-control" id="purchase_order_id" name="purchase_order_id"/>
+                    </div>
+
+
+                    <div class="form-group col-md-12 description">
+                        <label for="description">DESCRIPTION</label>
+                        <input type="text" class="form-control" id="description" name="description"/>
+                    </div>
+
+                    <div class="form-group col-md-6 quantity">
+                        <label for="quantity">QUANTITY</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity"/>
+                    </div>
+
+                    <div class="form-group col-md-6 unit_price">
+                        <label for="unit_price">UNIT PRICE</label>
+                        <input type="number" class="form-control" id="unit_price" name="unit_price"/>
+                    </div>
+
+                    <div class="form-group col-md-6 discount">
+                        <label for="discount">DISCOUNT</label>
+                        <input type="number" class="form-control" id="discount" name="discount"/>
+                    </div>
+
+                    <div class="form-group col-md-6 tax_rate">
+                        <label for="tax_rate">TAX RATE</label>
+                        <input type="text" class="form-control" id="tax_rate" name="tax_rate"/>
+                    </div>
+
+                    <div class="form-group col-md-12 total_amount">
+                        <label for="total_amount">TOTAL AMOUNT</label>
+                        <input type="text" class="form-control" id="total_amount" name="total_amount"/>
+                    </div>
+
                 </div>
             </form>
         </div>

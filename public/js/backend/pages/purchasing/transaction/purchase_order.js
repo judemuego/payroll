@@ -6,6 +6,7 @@ $(function() {
     actions = 'save';
     module_type = 'transaction';
     modal_content = '';
+    po_id = '';
 
     scion.centralized_button(false, true, true, true);
     scion.action.tab(tab_active);
@@ -22,6 +23,13 @@ function success(record) {
                 case 'preparation':
                     $('#purchase_orders_table').DataTable().draw();
                     modalHideFunction();
+                    break;
+
+                case 'preparation_detail':
+                    $('#purchase_order_details_table').DataTable().draw();
+                    $('#purchase_orders_table').DataTable().draw();
+                    scion.create.sc_modal('details_form').hide('', modalHideFunction_detail)
+
                     break;
             }
             break;
@@ -57,6 +65,7 @@ function delete_success() {
 function delete_error() {}
 
 function generateData() {
+    active_id = po_id;
     switch(module_content) {
         case 'preparation':
             form_data = {
@@ -74,6 +83,21 @@ function generateData() {
                 subtotal: $('#subtotal').val(),
                 total_with_tax: $('#total_with_tax').val(),
                 delivery_instruction: $('#delivery_instruction').val(),
+            };
+            break;
+
+        case 'preparation_detail':
+            form_data = {
+                _token: _token,
+                purchase_order_id: po_id,
+                item: $('#item').val(),
+                description: $('#description').val(),
+                quantity: $('#quantity').val(),
+                unit_price: $('#unit_price').val(),
+                discount: $('#discount').val(),
+                tax_rate: $('#tax_rate').val(),
+                total_amount: $('#total_amount').val(),
+                split: $('#split').val(),
             };
             break;
     }
@@ -110,8 +134,12 @@ function preparation_func() {
         [
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";
+                html += '<div class="d-flex align-items-center">';
                 html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
-                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/purchasing/purchase_orders/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit(\'/purchasing/purchase_orders/edit/\', ' + row.id + ')"><i class="fas fa-pen"></i></a>';
+                html += '<a href="#" class="edit" onclick="add_cart(' + row.id + ')"><i class="fas fa-shopping-cart"></i></a>';
+                html += '</div>';
+
                 return html;
             }},
             { data: "DT_RowIndex", title:"#" },
@@ -132,18 +160,61 @@ function preparation_func() {
             { data: "site.project_name", title: "Ship To" },
             { data: "site.location", title: "Address" },
             { data: "po_date", title: "PO Date" },
+            { data: "subtotal", title: "Sub Total" },
+            { data: "total_with_tax", title: "Total with Tax" },
             { data: "contact_no", title: "Contact No" },
             { data: "reference", title: "Reference No" },
             { data: "terms", title: "Terms" },
             { data: "due_date", title: "Due Date" },
             { data: "order_no", title: "Order No." },
             { data: "tax_type", title: "Tax Type" },
-            { data: "subtotal", title: "Sub Total" },
-            { data: "total_with_tax", title: "Total with Tax" },
             { data: "delivery_instruction", title: "Delivery Instruction" },
             // }},
         ], 'Bfrtip', []
     );
+}
+
+function add_cart(id) {
+    module_content = 'preparation_detail';
+    modal_content = 'details';
+    module_type = 'custom';
+    module_url = '/purchasing/purchase_order_details';
+    page_title = 'ADD TO CART';
+    po_id = id;
+
+    if ($.fn.DataTable.isDataTable('#purchase_order_detail_table')) {
+        $('#purchase_order_detail_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'purchase_order_detail_table',
+        '/purchasing/purchase_order_details/get/' + id,
+        [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<div class="d-flex align-items-center">';
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit(\'/purchasing/purchase_orders/edit/\', ' + row.id + ')"><i class="fas fa-pen"></i></a>';
+                html += '</div>';
+
+                return html;
+            }},
+            { data: "DT_RowIndex", title:"#" },
+            { data: "item", title: "Item" },
+            { data: "description", title: "Description" },
+            { data: "quantity", title: "Quantity" },
+            { data: "unit_price", title: "Unit Price" },
+            { data: "discount", title: "Discount" },
+            { data: "tax_rate", title: "Tax Rate" },
+            { data: "total_amount", title: "Total Amount" },
+
+            // }},
+        ], 'Bfrtip', []
+    );
+
+    scion.create.sc_modal("preparation_detail_form", 'PURCHASE ORDER DETAILS').show(modalShowFunction);
+
+    scion.centralized_button(false, true, true, true);
 }
 
 function modalShowFunction() {
@@ -151,5 +222,10 @@ function modalShowFunction() {
 }
 
 function modalHideFunction() {
+    scion.centralized_button(false, true, true, true);
+    scion.create.sc_modal('preparation_form').hide('all')
+}
+
+function modalHideFunction_detail() {
     scion.centralized_button(false, true, true, true);
 }

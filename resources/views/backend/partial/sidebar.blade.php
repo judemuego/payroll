@@ -37,7 +37,6 @@
                 <ul id="employee" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">EMPLOYEE</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/employee-information">EMPLOYEE PROFILE</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/payroll/201-file">201 FILE</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/masterlist/employee">EMPLOYEE MASTERLIST</a></li>
                 </ul>
             </li>
@@ -129,7 +128,7 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/payroll/pagibig">PAG-IBIG</a></li>
                 </ul>
             </li>
-            <li class="sidebar-item">
+            {{-- <li class="sidebar-item">
                 <a href="#employee_setup" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-list-alt"></i> <span class="align-middle">EMPLOYEE</span>
@@ -138,7 +137,7 @@
                 <ul id="employee_setup" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">EMPLOYEE SETUP</li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="sidebar-item">
                 <a href="#roles_permission" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
