@@ -84,7 +84,7 @@
         <div class="col-4">
             <div class="form-group birthdate">
                 <label>BIRTHDATE <span class="required">*</span></label>
-                <input type="date" class="form-control" name="birthdate" id="birthdate"/>
+                <input type="date" class="form-control" name="birthdate" id="birthdate" max="9999-12-31"/>
             </div>
         </div>
         <div class="col-4">
@@ -97,21 +97,28 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="form-group citizenship">
-                <label>CITIZENSHIP <span class="required">*</span></label>
-                <input type="text" class="form-control" name="citizenship" id="citizenship"/>
-            </div>
+        <div class="form-group citizenship">
+            <label>CITIZENSHIP <span class="required">*</span></label>
+            <select class="form-control" name="citizenship" id="citizenship">
+            </select>
+        </div>
         </div>
         <div class="col-6">
             <div class="form-group phone1">
                 <label>CONTACT NUMBER 1 <span class="required">*</span></label>
-                <input type="text" class="form-control" name="phone1" id="phone1"/>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">(63)</span>
+                    <input type="text" class="form-control" name="phone1" id="phone1" data-mask="000 0000000" autocomplete="off" maxlength="11"/>
+                </div>
             </div>
         </div>
         <div class="col-6">
             <div class="form-group phone2">
                 <label>CONTACT NUMBER 2</label>
-                <input type="text" class="form-control" name="phone2" id="phone2"/>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">(63)</span>
+                    <input type="text" class="form-control" name="phone2" id="phone2" data-mask="000 0000000" autocomplete="off" maxlength="11"/>
+                </div>
             </div>
         </div>
         <div class="col-12">
@@ -207,7 +214,7 @@
         <div class="col-6">
             <div class="form-group emergency_no">
                 <label>CONTACT NUMBER</label>
-                <input type="text" class="form-control" name="emergency_no" id="emergency_no"/>
+                <input type="number" class="form-control" name="emergency_no" id="emergency_no"/>
             </div>
         </div>
 

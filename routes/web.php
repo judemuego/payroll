@@ -330,7 +330,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/save',                        'UserController@store'                                         )->name('save_classes');
             Route::get          ('/edit/{id}',                   'UserController@edit'                                          )->name('edit_classes');
             Route::post         ('/update/{id}',                 'UserController@update'                                        )->name('update_classes');
-            Route::get          ('/destroy/{id}',                'UserController@destroy'                                       )->name('destroy_classes');
+            Route::post         ('/destroy',                     'UserController@destroy'                                       )->name('destroy_classes');
         });
 
         Route::group(['prefix' => '/role'], function (){
@@ -339,16 +339,16 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/save',                        'RolesController@store'                                        )->name('save_employment_information');
             Route::get          ('/edit/{id}',                   'RolesController@edit'                                         )->name('edit_employment_information');
             Route::post         ('/update/{id}',                 'RolesController@update'                                       )->name('update_employment_information');
-            Route::get          ('/destroy/{id}',                'RolesController@destroy'                                      )->name('destroy_employment_information');
+            Route::post          ('/destroy',                    'RolesController@destroy'                                      )->name('destroy_employment_information');
         });
 
-        Route::group(['prefix' => '/permission'], function (){
-            Route::get          ('/',                            'PermissionController@index'                                        )->name('employment_information');
-            Route::get          ('/get',                         'PermissionController@get'                                          )->name('get_classes');
-            Route::post         ('/save',                        'PermissionController@store'                                        )->name('save_employment_information');
-            Route::get          ('/edit/{id}',                   'PermissionController@edit'                                         )->name('edit_employment_information');
-            Route::post         ('/update/{id}',                 'PermissionController@update'                                       )->name('update_employment_information');
-            Route::get          ('/destroy/{id}',                'PermissionController@destroy'                                      )->name('destroy_employment_information');
+        Route::group(['prefix' => '/access'], function (){
+            Route::get          ('/',                            'ModelHasRolesController@index'                                        )->name('employment_information');
+            Route::get          ('/get/{id}',                         'ModelHasRolesController@get'                                           )->name('get_classes');
+            Route::post         ('/save',                        'ModelHasRolesController@store'                                        )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'ModelHasRolesController@edit'                                         )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'ModelHasRolesController@update'                                       )->name('update_employment_information');
+            Route::post          ('/destroy',                    'ModelHasRolesController@destroy'                                      )->name('destroy_employment_information');
         });
 
     });

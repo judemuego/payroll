@@ -144,6 +144,12 @@
                         <i class="align-middle mr-2 fas fa-fw fa-list-alt"></i> <span class="align-middle">USER ACCESS</span>
                     </span>
                 </a>
+                <ul id="roles_permission" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="list-title">USER ACCESS</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/settings/users">USER</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/settings/role">ROLE</a></li>
+                    {{-- <li class="sidebar-item"><a class="sidebar-link" href="/settings/permission">PERMISSION</a></li> --}}
+                </ul>
             </li>
 
         </ul>

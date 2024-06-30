@@ -1,29 +1,22 @@
 $(function() {
-    modal_content = 'departments';
-    module_url = '/payroll/department';
+    modal_content = 'role';
+    module_url = '/settings/role';
     module_type = 'custom';
-    page_title = "Department";
+    page_title = "Role";
 
     scion.centralized_button(false, true, true, true);
     
     scion.create.table(
-        'departments_table',  
+        modal_content + '_table',  
         module_url + '/get', 
         [
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";
                 html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
-                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/department/edit/', "+ row.id + ' )"><i class="fas fa-pen"></i></a>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'"+module_url+"/edit/', "+ row.id + ' )"><i class="fas fa-pen"></i></a>';
                 return html;
             }},
-            { data: "DT_RowIndex", title:"#" },
-            {
-                data: "description",
-                title: "Description",
-                render: function(data, type, row, meta) {
-                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
-                }
-            }
+            { data: 'name', title: 'Name'}
         ], 'Bfrtip', []
     );
 
@@ -36,8 +29,8 @@ function success() {
         case 'update':
             break;
     }
-    $('#departments_table').DataTable().draw();
-    scion.create.sc_modal('departments_form').hide('all', modalHideFunction);
+    $('#'+modal_content+'_table').DataTable().draw();
+    scion.create.sc_modal(modal_content+'_form').hide('all', modalHideFunction);
 }
 
 function error() {
@@ -45,7 +38,7 @@ function error() {
 }
 
 function delete_success() {
-    $('#departments_table').DataTable().draw();
+    $('#'+modal_content+'_table').DataTable().draw();
 }
 
 function delete_error() {}
@@ -53,7 +46,7 @@ function delete_error() {}
 function generateData() {
     form_data = {
         _token: _token,
-        description: $('#description').val()
+        name: $('#name').val()
     };
 
     return form_data;

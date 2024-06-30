@@ -19,18 +19,98 @@ $(function() {
             { data: "profile_img", title: "", render: function(data, type, row, meta) {
                 return "<img height='50px' src='/images/payroll/employee-information/" + row.profile_img + "' />";
             }},
-            { data: "firstname", title: "NAME", render: function(data, type, row, meta) {
-                return row.firstname + " " + (row.middlename !== null && row.middlename !== ""?row.middlename + " ":"") + row.lastname + (row.suffix !== null && row.suffix !== ""?row.suffix + "":"");
-            }},
-            { data: "email", title: "EMAIL" },
-            { data: "birthdate", title: "BIRTHDATE", render: function(data, type, row, meta) {
-                return moment(row.birthdate).format('MMM DD, YYYY');
-            }},
-            { data: "gender", title: "GENDER" },
-            { data: "citizenship", title: "CITIZENSHIP" },
-            { data: "created_at", title: "CREATED DATE", render: function(data, type, row, meta) {
-                return moment(row.created_at).format('MMM DD, YYYY hh:mm A');
-            }},
+            {
+                data: "firstname",
+                title: "NAME",
+                render: function(data, type, row, meta) {
+                    var fullName = row.firstname + " ";
+                    if (row.middlename) fullName += row.middlename + " ";
+                    fullName += row.lastname;
+                    if (row.suffix) fullName += " " + row.suffix;
+                    return '<span class="expandable" title="' + fullName.trim() + '">' + fullName.trim() + '</span>';
+                }
+            },
+            {
+                data: "email",
+                title: "EMAIL",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "birthdate",
+                title: "BIRTHDATE",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + moment(row.birthdate).format('MMM DD, YYYY') + '">' + moment(row.birthdate).format('MMM DD, YYYY') + '</span>';
+                }
+            },
+            {
+                data: "gender",
+                title: "GENDER",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "citizenship",
+                title: "CITIZENSHIP",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "created_at",
+                title: "CREATED DATE",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + moment(row.created_at).format('MMM DD, YYYY hh:mm A') + '">' + moment(row.created_at).format('MMM DD, YYYY hh:mm A') + '</span>';
+                }
+            },
+            {
+                data: "employment_date",
+                title: "EMPLOYMENT DATE",
+                render: function(data, type, row, meta) {
+                    if (row.employments_tab && row.employments_tab.employment_date) {
+                        return '<span class="expandable" title="' + moment(row.employments_tab.employment_date).format('MMM DD, YYYY hh:mm A') + '">' + moment(row.employments_tab.employment_date).format('MMM DD, YYYY hh:mm A') + '</span>';
+                    } else {
+                        return '<span class="expandable" title="N/A">N/A</span>';
+                    }
+                }
+            },
+            {
+                data: "department",
+                title: "DEPARTMENT",
+                render: function(data, type, row, meta) {
+                    if (row.employments_tab && row.employments_tab.departments) {
+                        return '<span class="expandable" title="' + (row.employments_tab.departments.description || 'N/A') + '">' + (row.employments_tab.departments.description || 'N/A') + '</span>';
+                    } else {
+                        return '<span class="expandable" title="N/A">N/A</span>';
+                    }
+                }
+            },
+            {
+                data: "classes",
+                title: "CLASS",
+                render: function(data, type, row, meta) {
+                    if (row.employments_tab && row.employments_tab.classes) {
+                        return '<span class="expandable" title="' + (row.employments_tab.classes.description || 'N/A') + '">' + (row.employments_tab.classes.description || 'N/A') + '</span>';
+                    } else {
+                        return '<span class="expandable" title="N/A">N/A</span>';
+                    }
+                }
+            },
+            {
+                data: "positions",
+                title: "POSITION",
+                render: function(data, type, row, meta) {
+                    if (row.employments_tab && row.employments_tab.positions) {
+                        return '<span class="expandable" title="' + (row.employments_tab.positions.description || 'N/A') + '">' + (row.employments_tab.positions.description || 'N/A') + '</span>';
+                    } else {
+                        return '<span class="expandable" title="N/A">N/A</span>';
+                    }
+                }
+            }
+
+
         ], 'Bfrtip', []
     );
 

@@ -16,4 +16,9 @@ class Positions extends Model
         'created_by',
         'updated_by'
     ];
+
+    public function positions()
+    {
+        return $this->belongsTo(Positions::class, 'position_id');
+    }
 }

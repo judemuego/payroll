@@ -11,6 +11,7 @@ class Employment extends Model
 
     //
     protected $fillable = [
+        'id',
         'employee_id',
         'classes_id',
         'position_id',
@@ -21,5 +22,19 @@ class Employment extends Model
         'created_by',
         'updated_by'
     ];
-    
+
+    public function classes()
+    {
+        return $this->belongsTo(Classes::class, 'classes_id');
+    }
+
+    public function positions()
+    {
+        return $this->belongsTo(Positions::class, 'position_id');
+    }
+
+    public function departments()
+    {
+        return $this->belongsTo(Departments::class, 'department_id');
+    }
 }

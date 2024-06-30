@@ -688,7 +688,7 @@ table#lookup tbody>tr:hover {
 }
 
 /* CONTROLS */
-.form-control {
+.form-control:not(type='color') {
     background: #fff;
     border: 1px #ccc solid;
     font-size: 15px;
@@ -737,7 +737,7 @@ h3.group-title {
 .custom-modal {
     position: fixed;
     width: 100%;
-    height: calc(100% - 155px);
+    height: calc(100% - 104px);
     margin-top: -20px;
     background: rgba(0,0,0,0.5);
     z-index: 10;
@@ -987,4 +987,17 @@ table.dataTable thead {
         min-width: auto !important;
         margin: 0px !important;
     }
+}
+
+
+.card-count .title {
+    font-size: 18px;
+    color: #fff;
+    font-family: system-ui;
+}
+
+.card-count .value {
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
 }

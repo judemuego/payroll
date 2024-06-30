@@ -44,7 +44,15 @@
                         <label for="">Units</label>
                         <input type="number" class="form-control" id="units" name="units" value="0" min="0" required/>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-md-6">
+                        <label>TYPE OF UNIT</label>
+                        <select name="type_of_unit" id="type_of_unit" class="form-control">
+                            <option value=""></option>
+                            <option value="hours">HOURS</option>
+                            <option value="minute">MINUTE</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
                         <label for="">Normal Entitlement</label>
                         <input type="number" class="form-control" id="normal_entitlement" value="0" min="0" name="normal_entitlement" required/>
                     </div>

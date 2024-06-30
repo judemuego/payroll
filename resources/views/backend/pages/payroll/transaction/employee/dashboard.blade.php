@@ -47,6 +47,43 @@
 
 @section('content')
 <div class="row">
+    
+    <div class="col-6 card-count">
+        <div class="card bg-success">
+            <div class="card-body">
+                <div class="title">LAST PAYROLL</div>
+                <div class="value">P 100,000.00</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-6 card-count">
+        <div class="card bg-warning">
+            <div class="card-body">
+                <div class="title">UPCOMING PAYROLL</div>
+                <div class="value">P 91,800.00</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-6 po-card">
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="title">PURCHASE ORDER: <span class="text-success">APPROVE</span></div>
+                <div class="value">10</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-6 po-card">
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="title">PURCHASE ORDER: <span class="text-warning">AWAITING PAYMENTS</span></div>
+                <div class="value">20</div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">

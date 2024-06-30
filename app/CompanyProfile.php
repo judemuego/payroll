@@ -19,6 +19,14 @@ class CompanyProfile extends Model
         'tin',
         'company_logo',
         'theme',
+        'color',
+        'details',
+        'dark_mode',
+        'bank_account',
+        'payroll_liability',
+        'salary_expense',
+        'salary_payable',
+        'opening_balance_date',
         'created_by',
         'updated_by'
     ];

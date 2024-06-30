@@ -86,3 +86,8 @@
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="/js/backend/pages/purchasing/maintenance/supplier.js"></script>
 @endsection
+
+@section('styles')
+
+
+@endsection

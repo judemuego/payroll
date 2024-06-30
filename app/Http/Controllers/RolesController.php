@@ -27,7 +27,7 @@ class RolesController extends Controller
             'name' => ['required'],
         ]);
 
-        $request->request->add(['guard_name' => 'web', 'created_by' => Auth::user()->id]);
+        $request->request->add(['guard_name' => 'web']);
         Roles::create($request->all());
 
         return redirect()->back()->with('success','Successfully Added');
@@ -46,10 +46,14 @@ class RolesController extends Controller
         return response()->json(['Successfully Updated']);
     }
     
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $deparment_destroy = Roles::find($id);
-        $deparment_destroy->delete();
-        return response()->json(['Successfully Deleted!']);
+        $record = $request->data;
+
+        foreach($record as $item) {
+            Roles::find($item)->delete();
+        }
+        
+        return 'Record Deleted';
     }
 }

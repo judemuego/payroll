@@ -38,7 +38,7 @@
         <div class="col-xl-6 col-md-12">
             <div class="form-group employment_date">
                 <label>DATE OF EMPLOYMENT:<span class="required">*</span></label>
-                <input type="date" class="form-control" id="employment_date" name="employment_date">
+                <input type="date" class="form-control" id="employment_date" name="employment_date" max="9999-12-31">
             </div>
         </div>
         <div class="col-xl-6 col-md-12">

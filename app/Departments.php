@@ -16,4 +16,9 @@ class Departments extends Model
         'created_by',
         'updated_by'
     ];
+
+    public function departments()
+    {
+        return $this->belongsTo(Departments::class, 'department_id');
+    }
 }

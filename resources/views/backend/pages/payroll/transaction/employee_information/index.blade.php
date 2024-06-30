@@ -67,4 +67,28 @@
 <script src="{{asset('/plugins/onscan.min.js')}}" ></script>
 <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="/js/backend/pages/payroll/transaction/employee_information.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const citizenshipSelect = document.getElementById('citizenship');
+
+        // Fetch citizenship data from REST Countries API
+        fetch('https://restcountries.com/v3.1/all')
+            .then(response => response.json())
+            .then(data => {
+                const citizenshipOptions = data.map(country => country.name.common.toUpperCase());
+
+                citizenshipOptions.sort();
+
+                citizenshipOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.textContent = option;
+                    optionElement.value = option;
+                    citizenshipSelect.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching citizenship options:', error);
+            });
+    });
+</script>
 @endsection

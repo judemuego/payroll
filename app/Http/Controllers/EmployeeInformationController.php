@@ -46,7 +46,7 @@ class EmployeeInformationController extends Controller
             'province_1' => 'required',
             'country_1' => 'required',
             'zip_1' => 'required',
-            'email' => 'required|unique:employees'
+            'email' => 'required|unique:employees|email'
         ]);
 
         $existingEmployee = EmployeeInformation::where([
@@ -120,7 +120,7 @@ class EmployeeInformationController extends Controller
     public function getmasterlist()
     {
         if(request()->ajax()) {
-            return datatables()->of(EmployeeInformation::with('employments_tab', 'leave_tab', 'works_calendar', 'compensations')->orderBy('id', 'desc')->get())
+            return datatables()->of(EmployeeInformation::with('employments_tab', 'employments_tab.classes', 'employments_tab.positions', 'employments_tab.departments', 'leave_tab', 'works_calendar', 'compensations')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
