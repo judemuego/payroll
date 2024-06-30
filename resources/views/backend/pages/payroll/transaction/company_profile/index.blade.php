@@ -202,14 +202,47 @@
                         </div>
                     </div>
                     <div id="account_tab" class="form-tab">
-                        <h3>VISUAL APPEARANCE</h3>
+                        <h3>ACCOUNT</h3>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label>DARK MODE</label>
-                                <select name="dark_mode" id="dark_mode" class="form-control">
-                                    <option value="0">DISABLE</option>
-                                    <option value="1">ENABLE</option>
+                                <label>BANK ACCOUNT</label>
+                                <select name="bank_account" id="bank_account" class="form-control">
+                                    <option value=""></option>
+                                    @foreach ($record as $item)
+                                    <option value="{{$item->id}}">{{$item->account_name}}</option>
+                                    @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>PAYROLL LIABILITY</label>
+                                <select name="payroll_liability" id="payroll_liability" class="form-control">
+                                    <option value=""></option>
+                                    @foreach ($record as $item)
+                                    <option value="{{$item->id}}">{{$item->account_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>SALARY EXPENSE</label>
+                                <select name="salary_expense" id="salary_expense" class="form-control">
+                                    <option value=""></option>
+                                    @foreach ($record as $item)
+                                    <option value="{{$item->id}}">{{$item->account_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>SALARY PAYABLE</label>
+                                <select name="salary_payable" id="salary_payable" class="form-control">
+                                    <option value=""></option>
+                                    @foreach ($record as $item)
+                                    <option value="{{$item->id}}">{{$item->account_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>OPENING BALANCE DATE</label>
+                                <input type="date" class="form-control" name="opening_balance_date" id="opening_balance_date"/>
                             </div>
                         </div>
                     </div>
@@ -285,6 +318,14 @@
             tin: $('#tin').val(),
             company_logo: ($('#company_logo').val() !== ''?cropzeeGetImage('company_logo'):''),
             theme: '',
+            color: $('#color').val(),
+            details: $('#details').val(),
+            dark_mode: $('#dark_mode').val(),
+            bank_account: $('#bank_account').val(),
+            payroll_liability: $('#payroll_liability').val(),
+            salary_expense: $('#salary_expense').val(),
+            salary_payable: $('#salary_payable').val(),
+            opening_balance_date: $('#opening_balance_date').val(),
             company_work_calendar: {
                 sunday_start_time: $('#sunday_start_time').val(),
                 sunday_end_time: $('#sunday_end_time').val(),

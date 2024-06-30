@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Traits\GlobalFunction;
 use Auth;
+use App\ChartOfAccount;
 use App\CompanyProfile;
 use App\CompanyworkCalendar;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class CompanyProfileController extends Controller
 
     public function index()
     {
-        return view('backend.pages.payroll.transaction.company_profile.index', ["type"=>"2-view"]);
+        $record = ChartOfAccount::get();
+        return view('backend.pages.payroll.transaction.company_profile.index', ["type"=>"2-view"], compact('record'));
     }
 
     public function store(Request $request) {
