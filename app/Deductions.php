@@ -17,8 +17,13 @@ class Deductions extends Model
         'type',
         'taxable',
         'status',
+        'chart_id',
         'workstation_id',
         'created_by',
         'updated_by'
     ];
+    
+    public function chart() {
+        return $this->belongsTo(ChartOfAccount::class, 'chart_id');
+    }
 }

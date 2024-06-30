@@ -20,6 +20,7 @@ $(function() {
             { data: "leave_name", title: "LEAVE NAME" },
             { data: "units", title: "UNITS" },
             { data: "normal_entitlement", title: "NORMAL ENTITLEMENT" },
+            { data: "chart.account_name", title: "CHART OF ACCOUNT" },
             { data: "paid_leave", title: "PAID LEAVE" },
             { data: "show_on_payslip", title: "SHOW ON PAYSLIP" }
         ], 'Bfrtip', []

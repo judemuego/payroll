@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\LeaveType;
+use App\ChartOfAccount;
 use Illuminate\Http\Request;
 
 class LeaveTypeController extends Controller
@@ -12,13 +13,15 @@ class LeaveTypeController extends Controller
     public function index()
     {
         $leaveType = LeaveType::orderBy('id', 'desc')->get();
-        return view('backend.pages.payroll.maintenance.leave_type', compact('leaveType'));
+        $record = ChartOfAccount::orderBy('id', 'desc')->get();
+        return view('backend.pages.payroll.maintenance.leave_type', compact('leaveType', 'record'));
     }
 
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'leave_name' => 'required|unique:leave_types'
+            'leave_name' => 'required|unique:leave_types',
+            'chart_id' => 'required'
         ]);
 
         $request['workstation_id'] = Auth::user()->workstation_id;
@@ -32,7 +35,7 @@ class LeaveTypeController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(LeaveType::get())
+            return datatables()->of(LeaveType::with('chart')->get())
             ->addIndexColumn()
             ->make(true);
         }

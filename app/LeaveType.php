@@ -15,10 +15,14 @@ class LeaveType extends Model
         'normal_entitlement',
         'paid_leave',
         'show_on_payslip',
-        'workstation_id',
+        'chart_id',
         'workstation_id',
         'created_by',
         'updated_by',
         'deleted_by'
     ];
+    
+    public function chart() {
+        return $this->belongsTo(ChartOfAccount::class, 'chart_id');
+    }
 }

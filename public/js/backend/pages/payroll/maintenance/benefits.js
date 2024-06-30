@@ -19,6 +19,7 @@ $(function() {
             { data: "benefits", title: "BENEFITS" },
             { data: "description", title: "DESCRIPTION" },
             { data: "account", title: "ACCOUNT" },
+            { data: "chart.account_name", title: "CHART OF ACCOUNT" },
             { data: "type", title: "TYPE", render: function(data, type, row, meta) {
                 var html = "";
                 if(row.type === 'government_mandated') {
@@ -59,6 +60,7 @@ function generateData() {
         benefits: $('#benefits').val(),
         description: $('#description').val(),
         account: $('input#account').val(),
+        chart_id: $('#chart_id').val(),
         type: $('#type').val()
     };
 

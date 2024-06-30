@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Deductions;
+use App\ChartOfAccount;
 use Illuminate\Http\Request;
 
 class DeductionsController extends Controller
@@ -11,12 +12,13 @@ class DeductionsController extends Controller
     
     public function index()
     {
-        return view('backend.pages.setup.payroll_setup.deductions');
+        $record = ChartOfAccount::orderBy('id', 'desc')->get();
+        return view('backend.pages.setup.payroll_setup.deductions', compact('record'));
     }
     
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Deductions::get())
+            return datatables()->of(Deductions::with('chart')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -28,6 +30,7 @@ class DeductionsController extends Controller
             'name' => 'required',
             'code' => 'required|unique:deductions',
             'type' => 'required',
+            'chart_id' => 'required',
             'status' => 'required',
         ]);
         
