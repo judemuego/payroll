@@ -70,8 +70,8 @@
                 </a>
                 <ul id="accounting" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">ACCOUNTING</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/accounting/chart_of_accounts">Chart of Accounts</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/accounting/account_types">Account Type</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/accounting/chart_of_accounts">CHART OF ACCOUNTS</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/accounting/account_types">ACCOUNT TYPE</a></li>
                 </ul>
             </li>
 

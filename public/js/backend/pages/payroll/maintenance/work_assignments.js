@@ -15,7 +15,9 @@ $(function() {
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 return html;
             }},
-            { data: "title", title: "TITLE" },
+            { data: "title", title: "TITLE", render: function(data, type, row, meta) {
+                return '<span class="expandable" title="' + data + '">' + data + '</span>';
+            }},
             { data: "status", title: "STATUS", render: function(data, type, row, meta) {
                 var html = "";
                 if(row.status === 1) {

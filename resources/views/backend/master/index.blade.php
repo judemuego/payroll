@@ -52,6 +52,42 @@
         background: #ff9f9f;
         color: #fff;
     }
+    /* Ensure text wrap and tooltip styling for DataTable cells */
+    table.dataTable td {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    table.dataTable td span {
+        display: block;
+    }
+
+    table.dataTable td span[title]:hover::after {
+        content: attr(title); /* Tooltip content from the title attribute */
+        position: absolute;
+        transform: translateY(-50%);
+        left: 100%; /* Position the tooltip */
+        top: 50%;
+        background-color: #333;
+        color: #fff;
+        padding: 5px;
+        border-radius: 3px;
+        white-space: nowrap;
+        z-index: 1;
+        margin-left: 10px; /* Space between the cell and the tooltip */
+        pointer-events: none;
+        opacity: 0.75;
+    }
+
+    table.dataTable td span.expandable.expanded {
+        white-space: normal; /* Allows full content display */
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 5px;
+        z-index: 10;
+    }
     </style>
     <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
 
@@ -67,6 +103,16 @@
             channel.bind('form-submitted', function(data) {
             alert(JSON.stringify(data));
         });
+
+        $(document).on('click', 'span.expandable', function() {
+            $(this).toggleClass('expanded');
+            if ($(this).hasClass('expanded')) {
+                $(this).removeAttr('title'); 
+            } else {
+                $(this).attr('title', $(this).text()); 
+            }
+        });
+        
 
     </script>
     

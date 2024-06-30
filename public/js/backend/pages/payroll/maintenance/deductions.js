@@ -15,9 +15,27 @@ $(function() {
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/deductions/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 return html;
             }},
-            { data: "code", title: "CODE" },
-            { data: "name", title: "NAME" },
-            { data: "multiplier", title: "MULTIPLIER" },
+            {
+                data: "code",
+                title: "CODE",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "name",
+                title: "NAME",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "multiplier",
+                title: "MULTIPLIER",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
             { data: "type", title: "TYPE", render: function(data, type, row, meta) {
                 var html = "";
                 if(row.type === "deductions") {

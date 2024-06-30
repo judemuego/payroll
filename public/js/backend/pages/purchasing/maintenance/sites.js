@@ -16,9 +16,27 @@ $(function() {
                 return html;
             }},
             { data: "DT_RowIndex", title:"#" },
-            { data: "project_name", title: "Project Name" },
-            { data: "location", title: "Location" },
-            { data: "person_in_charge", title: "Person in Charge" }
+            {
+                data: "project_name",
+                title: "Project Name",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "location",
+                title: "Location",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "person_in_charge",
+                title: "Person in Charge",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            }
         ], 'Bfrtip', []
     );
 
