@@ -15,6 +15,7 @@ class LeaveType extends Model
         'normal_entitlement',
         'paid_leave',
         'show_on_payslip',
+        'type_of_unit',
         'chart_id',
         'workstation_id',
         'created_by',

@@ -39,6 +39,10 @@ $(function() {
                 }
             },
             {
+                data: "type_of_unit",
+                title: "TYPE OF UNIT",
+            },
+            {
                 data: "chart.account_name",
                 title: "CHART OF ACCOUNT",
                 render: function(data, type, row, meta) {
