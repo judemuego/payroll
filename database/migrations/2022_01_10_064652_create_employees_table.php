@@ -48,6 +48,7 @@ class CreateEmployeesTable extends Migration
             $table->string('philhealth_number')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('status');
+            $table->string('rfid')->nullable();
             $table->unsignedBigInteger('workstation_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
@@ -56,7 +57,7 @@ class CreateEmployeesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            
+
             $table->foreign('workstation_id')
                 ->references('id')
                 ->on('workstations');
@@ -64,7 +65,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('created_by')
                 ->references('id')
                 ->on('users');
-                
+
             $table->foreign('updated_by')
                 ->references('id')
                 ->on('users');

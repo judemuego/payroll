@@ -18,7 +18,9 @@ $(function() {
             { data: "DT_RowIndex", title:"#" },
             { data: "project_name", title: "Project Name" },
             { data: "location", title: "Location" },
-            { data: "person_in_charge", title: "Person in Charge" }
+            { data: "id", title:"Person in Charge", render: function(data, type, row, meta) {
+                return row.employee.firstname + ' ' + row.employee.lastname;
+            }},
         ], 'Bfrtip', []
     );
 

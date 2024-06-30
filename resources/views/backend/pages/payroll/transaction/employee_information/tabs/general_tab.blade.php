@@ -17,13 +17,13 @@
         <div class="col-4">
             <div class="form-group">
                 @include('backend.partial.component.lookup', [
-                    'label' => "EMPLOYEE NUMBER", 
+                    'label' => "EMPLOYEE NUMBER",
                     'placeholder' => '<NEW>',
-                    'id' => "employee_no", 
-                    'title' => "EMPLOYEE NUMBER", 
-                    'url' => "/payroll/employee-information/get", 
+                    'id' => "employee_no",
+                    'title' => "EMPLOYEE NUMBER",
+                    'url' => "/payroll/employee-information/get",
                     'data' => array(
-                        array('data' => "DT_RowIndex", 'title' => "#"), 
+                        array('data' => "DT_RowIndex", 'title' => "#"),
                         array('data' => "employee_no", 'title' => "Employee Number"),
                         array('data' => "full_name", 'title' => "Name"),
                         array('data' => "email", 'title' => "Email"),
@@ -158,7 +158,7 @@
                 <input type="text" class="form-control" name="zip_1" id="zip_1"/>
             </div>
         </div>
-        
+
         <h3 class="col-12 form-title">ADDRESS 2</h3>
         <div class="col-4">
             <div class="form-group street_2">
@@ -196,7 +196,7 @@
                 <input type="text" class="form-control" name="zip_2" id="zip_2"/>
             </div>
         </div>
-        
+
         <h3 class="col-12 form-title">EMERGENCY CONTACT</h3>
         <div class="col-6">
             <div class="form-group emergency_name">

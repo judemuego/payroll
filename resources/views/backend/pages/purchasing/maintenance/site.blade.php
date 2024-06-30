@@ -46,8 +46,12 @@
                     </div>
 
                     <div class="form-group col-md-12 person_in_charge">
-                        <label>Project in Charge</label>
-                        <input type="text" class="form-control" id="person_in_charge" name="person_in_charge"/>
+                        <label>Person in Charge</label>
+                        <select name="person_in_charge" id="person_in_charge" class="form-control">
+                            @foreach ($employees as $employee)
+                                <option value="{{ $employee->id }}">{{ $employee->firstname . ' ' . $employee->lastname }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </form>

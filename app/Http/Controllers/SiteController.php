@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Site;
+use App\EmployeeInformation;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -11,7 +12,8 @@ class SiteController extends Controller
     public function index()
     {
         $sites = Site::orderBy('id', 'desc')->get();
-        return view('backend.pages.purchasing.maintenance.site', compact('sites'));
+        $employees = EmployeeInformation::orderBy('id', 'desc')->get();
+        return view('backend.pages.purchasing.maintenance.site', compact('sites', 'employees'));
     }
 
     public function store(Request $request)
@@ -33,7 +35,7 @@ class SiteController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Site::orderBy('id', 'desc')->get())
+            return datatables()->of(Site::with('employee')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
