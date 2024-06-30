@@ -17,12 +17,50 @@ $(function() {
                 return html;
             }},
             { data: "DT_RowIndex", title:"#" },
-            { data: "leave_name", title: "LEAVE NAME" },
-            { data: "units", title: "UNITS" },
-            { data: "normal_entitlement", title: "NORMAL ENTITLEMENT" },
-            { data: "chart.account_name", title: "CHART OF ACCOUNT" },
-            { data: "paid_leave", title: "PAID LEAVE" },
-            { data: "show_on_payslip", title: "SHOW ON PAYSLIP" }
+            {
+                data: "leave_name",
+                title: "LEAVE NAME",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "units",
+                title: "UNITS",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "normal_entitlement",
+                title: "NORMAL ENTITLEMENT",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "chart.account_name",
+                title: "CHART OF ACCOUNT",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "paid_leave",
+                title: "PAID LEAVE",
+                render: function(data, type, row, meta) {
+                    var checkboxHtml = data ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
+                    return '<span class="expandable" title="' + data + '">' + checkboxHtml + '</span>';
+                }
+            },
+            {
+                data: "show_on_payslip",
+                title: "SHOW ON PAYSLIP",
+                render: function(data, type, row, meta) {
+                    var checkboxHtml = data ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
+                    return '<span class="expandable" title="' + data + '">' + checkboxHtml + '</span>';
+                }
+            }
         ], 'Bfrtip', []
     );
 

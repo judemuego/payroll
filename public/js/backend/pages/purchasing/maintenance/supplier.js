@@ -15,15 +15,63 @@ $(function() {
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/purchasing/supplier/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 return html;
             }},
-            { data: "DT_RowIndex", title:"#" },
-            { data: "supplier_name", title: "Supplier Name" },
-            { data: "contact_no", title: "Contact No" },
-            { data: "contact_person", title: "Contact Person" },
-            { data: "address", title: "Address" },
-            { data: "tin_no", title: "TIN No" },
-            { data: "payment_terms", title: "Payment Terms" },
-            { data: "bank_name", title: "Bank Name" },
-            { data: "bank_account", title: "Bank Account" },
+            { data: "DT_RowIndex", title: "#" },
+            {
+                data: "supplier_name",
+                title: "Supplier Name",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "contact_no",
+                title: "Contact No",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "contact_person",
+                title: "Contact Person",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "address",
+                title: "Address",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "tin_no",
+                title: "TIN No",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "payment_terms",
+                title: "Payment Terms",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "bank_name",
+                title: "Bank Name",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "bank_account",
+                title: "Bank Account",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            }
         ], 'Bfrtip', []
     );
 

@@ -2,7 +2,7 @@ $(function() {
     modal_content = 'positions';
     module_url = '/payroll/position';
     module_type = 'custom';
-    page_title = 'Position';
+    page_title = 'POSITIONS';
 
     scion.centralized_button(false, true, true, true);
     
@@ -17,7 +17,13 @@ $(function() {
                 return html;
             }},
             { data: "DT_RowIndex", title:"#" },
-            { data: "description", title: "Description" }
+            {
+                data: "description",
+                title: "Description",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            }
         ], 'Bfrtip', []
     );
 

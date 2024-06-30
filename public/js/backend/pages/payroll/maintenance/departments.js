@@ -17,7 +17,13 @@ $(function() {
                 return html;
             }},
             { data: "DT_RowIndex", title:"#" },
-            { data: "description", title: "Description" }
+            {
+                data: "description",
+                title: "Description",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            }
         ], 'Bfrtip', []
     );
 

@@ -15,9 +15,20 @@ $(function() {
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/classes/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 return html;
             }},
-            { data: "DT_RowIndex", title:"#" },
-            { data: "description", title: "Description" },
-            { data: "payment_schedule", title: "Payment Schedule" },
+            {
+                data: "description",
+                title: "Description",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "payment_schedule",
+                title: "Payment Schedule",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
             { data: "tax_applicable", title: "Tax Applicable", render: function(data, type, row, meta) {
                 var html = "";
                 if(row.tax_applicable === "1") {

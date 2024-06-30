@@ -16,8 +16,20 @@ $(function() {
                 return html;
             }},
             { data: "DT_RowIndex", title:"#" },
-            { data: "category", title: "Category" },
-            { data: "account_type", title: "Account Type" },
+            {
+                data: "category",
+                title: "Category",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "account_type",
+                title: "Account Type",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            }
         ], 'Bfrtip', []
     );
 

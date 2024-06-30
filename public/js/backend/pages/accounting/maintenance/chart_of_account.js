@@ -15,12 +15,41 @@ $(function() {
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/accounting/chart_of_accounts/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 return html;
             }},
-            { data: "DT_RowIndex", title:"#" },
-            { data: "account_number", title: "Account Number" },
-            { data: "account_name", title: "Account Name" },
-            { data: "account_type.account_type", title: "Account Type" },
-            { data: "description", title: "Description" },
-            { data: "normal_balance", title: "Normal Balance" },
+            {
+                data: "account_number",
+                title: "Account Number",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "account_name",
+                title: "Account Name",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "account_type.account_type",
+                title: "Account Type",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "description",
+                title: "Description",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "normal_balance",
+                title: "Normal Balance",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            }
         ], 'Bfrtip', []
     );
 

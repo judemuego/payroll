@@ -16,11 +16,32 @@ $(function() {
                 return html;
             }},
             { data: "DT_RowIndex", title:"#" },
-            { data: "project_name", title: "Project Name" },
-            { data: "location", title: "Location" },
-            { data: "id", title:"Person in Charge", render: function(data, type, row, meta) {
-                return row.employee.firstname + ' ' + row.employee.lastname;
-            }},
+            {
+                data: "project_name",
+                title: "Project Name",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "location",
+                title: "Location",
+                render: function(data, type, row, meta) {
+                    return '<span class="expandable" title="' + data + '">' + data + '</span>';
+                }
+            },
+            {
+                data: "id",
+                title: "Person in Charge",
+                render: function(data, type, row, meta) {
+                    if (row.employee && row.employee.firstname && row.employee.lastname) {
+                        var fullName = row.employee.firstname + ' ' + row.employee.lastname;
+                        return '<span class="expandable" title="' + fullName + '">' + fullName + '</span>';
+                    } else {
+                        return '<span class="expandable" title="N/A">N/A</span>';
+                    }
+                }
+            }
         ], 'Bfrtip', []
     );
 
