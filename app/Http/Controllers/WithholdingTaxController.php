@@ -16,7 +16,7 @@ class WithholdingTaxController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(WithholdingTax::get())
+            return datatables()->of(WithholdingTax::orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -24,7 +24,7 @@ class WithholdingTaxController extends Controller
 
     public function store(Request $request)
     {
-        $withholding = $request->validate([
+        $validatedData = $request->validate([
             'frequency' => ['required'],
             'range_from' => ['required'],
             'range_to' => ['required'],
@@ -32,13 +32,17 @@ class WithholdingTaxController extends Controller
             'rate_on_excess' => ['required'],
         ]);
         
-        $request['workstation_id'] = Auth::user()->workstation_id;
-        $request['created_by'] = Auth::user()->id;
-        $request['updated_by'] = Auth::user()->id;
-
-        WithholdingTax::create($request->all());
-
-        return redirect()->back()->with('success','Successfully Added');
+        if (!WithholdingTax::where('frequency', $validatedData['frequency'])->exists()) {
+            
+            $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['created_by'] = Auth::user()->id;
+            $request['updated_by'] = Auth::user()->id;
+        
+            WithholdingTax::create($request->all());
+        }
+        else {
+            return false;
+        }
     }
 
     public function edit($id)

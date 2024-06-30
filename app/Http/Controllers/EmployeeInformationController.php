@@ -36,7 +36,6 @@ class EmployeeInformationController extends Controller
         $validate = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'firstname' => 'required',
             'gender' => 'required',
             'birthdate' => 'required',
             'citizenship' => 'required',
@@ -50,8 +49,19 @@ class EmployeeInformationController extends Controller
             'email' => 'required|unique:employees'
         ]);
 
+        $existingEmployee = EmployeeInformation::where([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'birthdate' => $request->birthdate,
+        ])->first();
 
-        $request['employee_no'] = $this->series('EMP', 'EmployeeInformation');
+        if ($existingEmployee) {
+
+            return false;
+        }
+        else {
+
+            $request['employee_no'] = $this->series('EMP', 'EmployeeInformation');
 
         if($request->profile_img !== null) {
             $request['profile_img'] = $this->uploadFile($request->profile_img, 'images/payroll/employee-information/', date('Ymdhis'));
@@ -94,12 +104,14 @@ class EmployeeInformationController extends Controller
         $last_record = array("id" => $employee->id, "employee_no" => $employee->employee_no);
 
         return response()->json(compact('validate', 'last_record'));
+            
+        }
     }
 
     public function get()
     {
         if(request()->ajax()) {
-            return datatables()->of(EmployeeInformation::select("id", "employee_no", DB::raw("CONCAT(employees.firstname,' ',employees.lastname) as full_name"), "email")->get())
+            return datatables()->of(EmployeeInformation::select("id", "employee_no", DB::raw("CONCAT(employees.firstname,' ',employees.lastname) as full_name"), "email")->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -108,7 +120,7 @@ class EmployeeInformationController extends Controller
     public function getmasterlist()
     {
         if(request()->ajax()) {
-            return datatables()->of(EmployeeInformation::with('employments_tab', 'leave_tab', 'works_calendar', 'compensations')->get())
+            return datatables()->of(EmployeeInformation::with('employments_tab', 'leave_tab', 'works_calendar', 'compensations')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }

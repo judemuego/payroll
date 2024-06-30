@@ -18,7 +18,7 @@ class EarningsController extends Controller
     
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(Earnings::with('chart')->get())
+            return datatables()->of(Earnings::with('chart')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -26,7 +26,7 @@ class EarningsController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'code' => 'required|unique:earnings',
             'type' => 'required',
@@ -34,13 +34,17 @@ class EarningsController extends Controller
             'status' => 'required',
         ]);
         
-        $request['workstation_id'] = Auth::user()->workstation_id;
-        $request['created_by'] = Auth::user()->id;
-        $request['updated_by'] = Auth::user()->id;
-
-        Earnings::create($request->all());
-
-        return response()->json(compact('validate'));
+        if (!Earnings::where('name', $validatedData['name'])->exists()) {
+            
+            $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['created_by'] = Auth::user()->id;
+            $request['updated_by'] = Auth::user()->id;
+        
+            Earnings::create($request->all());
+        }
+        else {
+            return false;
+        }
     }
     
     public function edit($id)

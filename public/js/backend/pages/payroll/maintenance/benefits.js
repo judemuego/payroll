@@ -46,7 +46,9 @@ function success() {
     scion.create.sc_modal('benefits_form').hide('all', modalHideFunction);
 }
 
-function error() {}
+function error() {
+    toastr.error('Record already exist.', 'Failed')
+}
 
 function delete_success() {
     $('#benefits_table').DataTable().draw();

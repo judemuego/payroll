@@ -24,18 +24,22 @@ class LeaveTypeController extends Controller
             'chart_id' => 'required'
         ]);
 
-        $request['workstation_id'] = Auth::user()->workstation_id;
-        $request['created_by'] = Auth::user()->id;
-        $request['updated_by'] = Auth::user()->id;
-
-        LeaveType::create($request->all());
-
-        return response()->json(compact('validate'));
+        if (!LeaveType::where('leave_name', $validatedData['leave_name'])->exists()) {
+            
+            $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['created_by'] = Auth::user()->id;
+            $request['updated_by'] = Auth::user()->id;
+        
+            LeaveType::create($request->all());
+        }
+        else {
+            return false;
+        }
     }
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(LeaveType::with('chart')->get())
+            return datatables()->of(LeaveType::with('chart')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
