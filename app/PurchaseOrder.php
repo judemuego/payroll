@@ -37,6 +37,10 @@ class PurchaseOrder extends Model
         'updated_by'
     ];
 
+    public function details() {
+        return $this->hasMany(PurchaseOrderDetail::class, 'purchase_order_id', 'id');
+    }
+
     public function supplier() {
         return $this->belongsTo(Supplier::class, 'supplier_id');
     }

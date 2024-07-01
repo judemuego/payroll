@@ -138,6 +138,7 @@ function preparation_func() {
                 html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit(\'/purchasing/purchase_orders/edit/\', ' + row.id + ')"><i class="fas fa-pen"></i></a>';
                 html += '<a href="#" class="edit" onclick="add_cart(' + row.id + ')"><i class="fas fa-shopping-cart"></i></a>';
+                html += '<a href="#" class="edit" onclick="print(' + row.id + ')"><i class="fas fa-print"></i></a>';
                 html += '</div>';
 
                 return html;
@@ -215,6 +216,20 @@ function add_cart(id) {
     scion.create.sc_modal("preparation_detail_form", 'PURCHASE ORDER DETAILS').show(modalShowFunction);
 
     scion.centralized_button(false, true, true, true);
+}
+
+function print(id) {
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/purchasing/purchase_orders/print/' + id,
+        method: 'post',
+        data: {},
+        success: function(data) {
+
+        }
+    });
 }
 
 function modalShowFunction() {

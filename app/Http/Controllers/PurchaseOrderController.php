@@ -37,6 +37,7 @@ class PurchaseOrderController extends Controller
             'delivery_instruction' => ['required', 'string'],
         ]);
 
+        $request['prepared_by'] = Auth::user()->workstation_id;
         $request['workstation_id'] = Auth::user()->workstation_id;
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
@@ -48,7 +49,7 @@ class PurchaseOrderController extends Controller
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(PurchaseOrder::with('supplier', 'site', 'prepared_by', 'reviewed_by', 'approved_by', 'received_by')->orderBy('id', 'desc')->get())
+            return datatables()->of(PurchaseOrder::with('supplier', 'site', 'prepared_by', 'reviewed_by', 'approved_by', 'received_by', 'details')->orderBy('id', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }
@@ -57,6 +58,12 @@ class PurchaseOrderController extends Controller
     public function edit($id)
     {
         $purchase_orders = PurchaseOrder::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('purchase_orders'));
+    }
+
+    public function print($id)
+    {
+        $purchase_orders = PurchaseOrder::with('supplier', 'site', 'prepared_by', 'reviewed_by', 'approved_by', 'received_by', 'details')->where('id', $id)->orderBy('id')->firstOrFail();
         return response()->json(compact('purchase_orders'));
     }
 

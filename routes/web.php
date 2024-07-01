@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/save',                        'PurchaseOrderController@store'                                      )->name('save_classes');
             Route::get          ('/edit/{id}',                   'PurchaseOrderController@edit'                                       )->name('edit_classes');
             Route::post         ('/update/{id}',                 'PurchaseOrderController@update'                                     )->name('update_classes');
+            Route::post         ('/print/{id}',                  'PurchaseOrderController@print'                                      )->name('update_classes');
             Route::post         ('/destroy',                     'PurchaseOrderController@destroy'                                    )->name('destroy_classes');
         });
 
