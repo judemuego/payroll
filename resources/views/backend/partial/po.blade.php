@@ -76,21 +76,19 @@
 
         <div class="row">
             <div class="col-12">
-                <table class="desc-table">
-                    <tr>
-                        <th>Description</th>
-                        <th>U/M</th>
-                        <th>Qty</th>
-                        <th>Rate</th>
-                        <th>Amount</th>
-                    </tr>
-                    <tr>
-                        <td width="50%"><span id="po_desc"></span></td>
-                        <td width="10%"><span id="po_um"></span></td>
-                        <td width="10%"><span id="po_qty"></span></td>
-                        <td width="10%"><span id="po_rate"></span></td>
-                        <td width="20%"><span id="po_amount"></span></td>
-                    </tr>
+                <table id="details-table" class="desc-table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>U/M</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data rows will be dynamically added here -->
+                    </tbody>
                 </table>
                 <table class="head-table">
                     <tr>
@@ -201,6 +199,11 @@
         }
         p#po_prepared_by {
             font-weight: bold;
+        }
+        table.desc-table>tbody>tr>td {
+            height: 650px;
+            vertical-align: baseline;
+            text-align: center;
         }
     </style>
 @endsection

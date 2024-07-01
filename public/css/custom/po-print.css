@@ -72,3 +72,8 @@ td.total-amount {
 p#po_prepared_by {
     font-weight: bold;
 }
+table.desc-table>tbody>tr>td {
+    height: 650px;
+    vertical-align: baseline;
+    text-align: center;
+}

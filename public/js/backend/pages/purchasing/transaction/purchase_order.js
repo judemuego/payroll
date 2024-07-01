@@ -242,6 +242,20 @@ function print(id) {
             $('#po_prepared_by_date').text(data.purchase_orders.prepared_at);
             $('#po_total').text('PHP ' + data.purchase_orders.total_with_tax);
 
+            // Clear existing rows (if any) in the details table
+            $('#details-table tbody').empty();
+
+            // Populate details into a table
+            $.each(data.purchase_orders.details, function(index, detail) {
+                var row = $('<tr>');
+            row.append('<td>' + detail.item + ' - ' + detail.description + '</td>');
+            row.append('<td>' + detail.unit_price + '</td>');
+            row.append('<td>' + detail.quantity + '</td>');
+            row.append('<td>' + detail.tax_rate + '</td>');
+            row.append('<td>' + detail.total_amount + '</td>');
+            $('#details-table tbody').append(row);
+        });
+
         }
     });
 }
