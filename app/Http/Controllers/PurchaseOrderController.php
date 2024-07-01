@@ -38,6 +38,9 @@ class PurchaseOrderController extends Controller
         ]);
 
         $request['prepared_by'] = Auth::user()->workstation_id;
+        $request['reviewed_by'] = Auth::user()->workstation_id;
+        $request['approved_by'] = Auth::user()->workstation_id;
+        $request['received_by'] = Auth::user()->workstation_id;
         $request['workstation_id'] = Auth::user()->workstation_id;
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
