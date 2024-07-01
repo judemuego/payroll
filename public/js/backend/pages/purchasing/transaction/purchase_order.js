@@ -228,8 +228,37 @@ function print(id) {
         data: {},
         success: function(data) {
 
+            scion.create.sc_modal("poPrint", 'Purchase Order').show(modalShowFunction);
+
+            $('#po_date1').text(moment(data.purchase_orders.po_date).format('MMM DD, YYYY'));
+            $('#po_no').text(data.purchase_orders.order_no);
+            $('#po_vendor1').text(data.purchase_orders.supplier.supplier_name);
+            $('#po_vendor_address1').text(data.purchase_orders.supplier.address);
+            $('#po_ship_to1').text(data.purchase_orders.site.project_name);
+            $('#po_ship_to_address1').text(data.purchase_orders.site.location);
+            $('#po_terms1').text(data.purchase_orders.terms);
+            $('#po_due_date1').text(data.purchase_orders.due_date);
+            $('#po_prepared_by').text(data.purchase_orders.prepared_by.firstname + ' ' +data.purchase_orders.prepared_by.lastname);
+            $('#po_prepared_by_date').text(data.purchase_orders.prepared_at);
+            $('#po_total').text('PHP ' + data.purchase_orders.total_with_tax);
+
         }
     });
+}
+
+function printDiv() {
+    var divToPrint=document.getElementById('printPO');
+    var newWin=window.open('','Print-Window');
+    newWin.document.open();
+    newWin.document.write('<html><head><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/custom/po-print.css"><link href="/backend/css/modern.css" rel="stylesheet"><link href="/css/custom/id.css" rel="stylesheet"></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+    newWin.document.close();
+
+    // setTimeout(function(){newWin.close();},10);
+
+    setTimeout(function() {
+        newWin.print();
+    }, 3000); // Change the delay time as needed (in milliseconds)
+
 }
 
 function modalShowFunction() {
