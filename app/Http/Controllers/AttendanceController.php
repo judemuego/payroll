@@ -61,14 +61,18 @@ class AttendanceController extends Controller
                 $fileName = str_random(10).'_'.$attendance->id.'.'.$ext[1];
                 \File::put(storage_path(). '/app/public/attendance/' . $fileName, base64_decode($file));
 
-                $data_access = array(
-                    "attendance_id" => $attendance->id,
-                    "type" => $request->type,
-                    "filename" => $fileName,
-                    "status" => 1
-                );
+                try {
+                    $data_access = array(
+                        "attendance_id" => $attendance->id,
+                        "type" => $request->type,
+                        "filename" => $fileName,
+                        "status" => 1
+                    );
+    
+                    ImageUpload::create($data_access);
+                } catch(Exception $e) {
 
-                ImageUpload::create($data_access);
+                }
 
                 $message = 'Saved';
             }

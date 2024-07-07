@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DateTime;
+use DatePeriod;
+use DateInterval;
 use App\TimeLogs;
 use App\Schedulings;
 use App\Earnings;
@@ -203,5 +206,69 @@ class TimeLogsController extends Controller
         }
 
         return $data;
+    }
+
+    public function get_record(Request $request, $id) {
+        $record = EmployeeInformation::with('compensations','employments_tab', 'employments_tab.calendar')->where('id', $id)->first();
+        $semi_monthly = $this->getSemiMonthly($record->employments_tab->calendar->start_date, $record->employments_tab->calendar->end_date, $request->date, $id);
+
+        return response()->json(compact('record', 'semi_monthly'));
+    }
+
+    public function getSemiMonthly($startDate, $endDate, $date, $id) {
+        
+        $start = new DateTime($startDate);
+        $end = new DateTime($endDate);
+        $selected = new DateTime($date);
+        
+        $start_2 = new DateTime($selected->format('Y').'-'.$selected->format('m').'-'.$start->format('d'));
+        $end_2 = new DateTime($selected->format('Y').'-'.$selected->format('m').'-'.$end->format('d'));
+        
+
+        $output = [];
+
+        $new_dates = [
+            'first_half' => [
+                "start" => $selected->format('Y').'-'.$selected->format('m').'-'.$start->format('d'),
+                "end" => $selected->format('Y').'-'.$selected->format('m').'-'.$end->format('d')
+            ],
+            'second_half' => [
+                "start" => $end_2->modify('+1 day')->format('Y-m-d'),
+                "end" => $start_2->modify('+1 month')->modify('-1 day')->format('Y-m-d')
+            ],
+            'date' => $selected->format('Y-m-d')
+        ];
+
+        if($selected <= new DateTime($new_dates['first_half']['end'])) {
+            $output = $this->generateOutput('first_half', $new_dates, $id);
+        }
+        else {
+            $output = $this->generateOutput('second_half', $new_dates, $id);
+        }
+
+        return $output;
+    }
+
+    public function generateOutput($half, $dates, $id) {
+        $output = [];
+        $interval = DateInterval::createFromDateString('1 day');
+        $period = new DatePeriod(new DateTime($dates[$half]['start']), $interval, (new DateTime($dates['second_half']['end']))->modify('+1 day'));
+        
+        foreach($period as $dt) {
+            $employee = Timelogs::where('employee_id', $id)->where('date', $dt->format('Y-m-d'))->first();
+            
+            array_push($output, [
+                "date" => $dt->format('Y-m-d'),
+                "day" => $dt->format('l'),
+                "time_in" => $employee !== null ? $employee->time_in:null,
+                "break_in" => $employee !== null ? $employee->break_in:null,
+                "break_out" => $employee !== null ? $employee->break_out:null,
+                "time_out" => $employee !== null ? $employee->time_out:null,
+                "ot_in" => $employee !== null ? $employee->ot_in:null,
+                "ot_out" => $employee !== null ? $employee->ot_out:null,
+            ]);
+        }
+
+        return $output;
     }
 }

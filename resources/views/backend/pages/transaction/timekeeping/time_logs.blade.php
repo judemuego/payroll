@@ -91,6 +91,90 @@
         </div>
     </div>
 </div>
+
+<div class="sc-modal-content" id="details_form">
+    <div class="sc-modal-dialog sc-xl">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('details_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <div class="row">
+                <div class="col-4">
+                    <table>
+                        <tr>
+                            <td class="td-label">TIMESHEET STATUS:</td>
+                            <td class="td-val"><span id='timesheet_status'>-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">EMPLOYEE NAME:</td>
+                            <td class="td-val"><span id='employee_name'>-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">EMPLOYEE NUMBER:</td>
+                            <td class="td-val"><span id='employee_number'>-</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <table>
+                        <tr>
+                            <td class="td-label">TOTAL REGULAR HOURS:</td>
+                            <td class="td-val"><span id='total_regular_hours'>0</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">OVERTIME:</td>
+                            <td class="td-val"><span id='total_overtime'>0</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">TOTAL WORKING HOURS:</td>
+                            <td class="td-val"><span id='total_working_hours'>0</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <table>
+                        <tr>
+                            <td class="td-label">MONTHLY SALARY:</td>
+                            <td class="td-val"><span id='monthly_salary'>0</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">DAILY SALARY:</td>
+                            <td class="td-val"><span id='daily_salary'>0</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">HOURLY RATE:</td>
+                            <td class="td-val"><span id='hourly_rate'>0</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table id="timesheet">
+                        <thead>
+                            <th>DATE</th>
+                            <th>DAY</th>
+                            <th>WORK STATUS</th>
+                            <th>TIME IN</th>
+                            <th>BREAK IN</th>
+                            <th>BREAK OUT</th>
+                            <th>TIME OUT</th>
+                            <th>OVERTIME IN</th>
+                            <th>OVERTIME OUT</th>
+                            <th>OFFICE HOURS</th>
+                            <th>BREAK TIME</th>
+                            <th>REGULAR HOURS</th>
+                            <th>APPROVED OVERTIME</th>
+                            <th>TOTAL WORKING HOURS</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @endsection
 

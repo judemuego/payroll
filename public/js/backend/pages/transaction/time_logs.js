@@ -17,6 +17,9 @@ $(function() {
         'employee_table',  
         module_url + '/get/all/' + scion.getDateRange($('#date-filter').val(), 1).first + '/' + scion.getDateRange($('#date-filter').val(), 1).last, 
         [
+            { data: null, title:"", render: function(data, type, row, meta) {
+                return "<button onclick='showDetails("+row.id+")' class='btn btn-sm btn-light'><i class='fas fa-list'></i></button>";
+            }},
             { data: "firstname", title:"EMPLOYEE", render: function(data, type, row, meta) {
                 return "<div class='employee_info' onclick='addRecord("+row.id+")'><img src='/images/payroll/employee-information/"+row.profile_img+"'/>" + row.firstname + " " + (row.middlename !== null && row.middlename !== ""?row.middlename + " ":"") + row.lastname + (row.suffix !== null && row.suffix !== ""?" " + row.suffix:"") + "</div>";
             }},
@@ -832,6 +835,9 @@ function filter(department) {
         'employee_table',  
         module_url + '/get/' + department + '/' + scion.getDateRange($('#date-filter').val(), 1).first + '/' + scion.getDateRange($('#date-filter').val(), 1).last, 
         [
+            { data: null, title:"", render: function(data, type, row, meta) {
+                return "<button onclick='showDetails("+row.id+")' class='btn btn-sm btn-light'><i class='fas fa-list'></i></button>";
+            }},
             { data: "firstname", title:"EMPLOYEE", render: function(data, type, row, meta) {
                 return "<div class='employee_info' onclick='addRecord("+row.id+")'><img src='/images/payroll/employee-information/"+row.profile_img+"'/>" + row.firstname + " " + (row.middlename !== null && row.middlename !== ""?row.middlename + " ":"") + row.lastname + (row.suffix !== null && row.suffix !== ""?" " + row.suffix:"") + "</div>";
             }},
@@ -1004,4 +1010,40 @@ function filter(department) {
             { data: "total", title: "TOTAL"}
         ], 'Bfrtip', ['csv', 'pdf']
     );
+}
+
+function showDetails(id) {
+    scion.create.sc_modal("details_form", "Details").show();
+
+    $.post(module_url + '/get_record/' + id, {_token: _token, date: $('#date-filter').val()}, function(response) {
+        var timesheet = '';
+
+        $('#timesheet_status').text('DRAFT');
+        $('#employee_name').text(response.record.firstname + (response.record.middlename !== "" && response.record.middlename !== null?" " + response.record.middlename:"") + " " + response.record.lastname);
+        $('#employee_number').text(response.record.employee_no);
+        $('#monthly_salary').text(response.record.compensations !== null?scion.currency(response.record.compensations.monthly_salary):'0');
+        $('#daily_salary').text(response.record.compensations !== null?scion.currency(response.record.compensations.daily_salary):'0');
+        $('#hourly_rate').text(response.record.compensations !== null?scion.currency(response.record.compensations.hourly_salary):'0');
+
+        response.semi_monthly.forEach((semiMonth) => {
+            timesheet += `<tr>`;
+                timesheet += `<td>${semiMonth.date}</td>`;
+                timesheet += `<td>${semiMonth.day}</td>`;
+                timesheet += `<td></td>`;
+                timesheet += `<td>${semiMonth.time_in!==null?moment(semiMonth.time_in).format('h:mm A'):'-'}</td>`;
+                timesheet += `<td>${semiMonth.break_in!==null?moment(semiMonth.break_in).format('h:mm A'):'-'}</td>`;
+                timesheet += `<td>${semiMonth.break_out!==null?moment(semiMonth.break_out).format('h:mm A'):'-'}</td>`;
+                timesheet += `<td>${semiMonth.time_out!==null?moment(semiMonth.time_out).format('h:mm A'):'-'}</td>`;
+                timesheet += `<td>${semiMonth.ot_in!==null?moment(semiMonth.ot_in).format('h:mm A'):'-'}</td>`;
+                timesheet += `<td>${semiMonth.ot_out!==null?moment(semiMonth.ot_out).format('h:mm A'):'-'}</td>`;
+                timesheet += `<td></td>`;
+                timesheet += `<td></td>`;
+                timesheet += `<td></td>`;
+                timesheet += `<td></td>`;
+                timesheet += `<td></td>`;
+            timesheet += `</tr>`;
+        });
+
+        $('#timesheet tbody').html(timesheet);
+    });
 }

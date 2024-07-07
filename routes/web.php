@@ -249,6 +249,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/save',                             'TimeLogsController@save'                                 )->name('save_time_logs');
             Route::post         ('/update-status',                    'TimeLogsController@update_status'                        )->name('update_status');
             Route::post         ('/cross-matching',                   'TimeLogsController@cross_matching'                       )->name('cross_matching');
+            Route::post         ('/get_record/{id}',                  'TimeLogsController@get_record'                           )->name('get');
         });
 
         Route::group(['prefix' => '/benefits'], function (){

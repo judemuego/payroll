@@ -37,4 +37,9 @@ class Employment extends Model
     {
         return $this->belongsTo(Departments::class, 'department_id');
     }
+
+    public function calendar()
+    {
+        return $this->belongsTo(PayrollCalendar::class, 'payroll_calendar_id');
+    }
 }

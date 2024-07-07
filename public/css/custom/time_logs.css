@@ -149,3 +149,34 @@ td .form-control {
 .sc-modal-dialog.sc-xl {
     max-width: 100% !important;
 }
+
+table.dataTable td {
+    max-width: none !important;
+}
+
+td.td-label {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+td.td-val {
+    font-size: 11px;
+}
+
+table#timesheet {
+    width: 100%;
+    margin-top: 10px;
+}
+
+table#timesheet th {
+    font-size: 11px;
+    padding: 5px;
+    background: #6eafdb;
+    color: #fff;
+}
+
+table#timesheet td {
+    border: 1px solid #eee;
+    padding: 5px;
+    font-size: 12px;
+}
