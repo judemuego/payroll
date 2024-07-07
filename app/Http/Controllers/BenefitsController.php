@@ -26,7 +26,7 @@ class BenefitsController extends Controller
 
     public function store(Request $request)
     {
-        $benefits = $request->validate([
+        $validatedData = $request->validate([
             'benefits' => ['required'],
             'description' => ['required'],
             'chart_id' => ['required']
@@ -36,6 +36,7 @@ class BenefitsController extends Controller
         if (!Benefits::where('benefits', $validatedData['benefits'])->exists()) {
             
             $request['workstation_id'] = Auth::user()->workstation_id;
+            $request['account'] = '';
             $request['created_by'] = Auth::user()->id;
             $request['updated_by'] = Auth::user()->id;
         

@@ -48,7 +48,17 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/save',                        'PurchaseOrderController@store'                                      )->name('save_classes');
             Route::get          ('/edit/{id}',                   'PurchaseOrderController@edit'                                       )->name('edit_classes');
             Route::post         ('/update/{id}',                 'PurchaseOrderController@update'                                     )->name('update_classes');
+            Route::post         ('/print/{id}',                  'PurchaseOrderController@print'                                      )->name('update_classes');
             Route::post         ('/destroy',                     'PurchaseOrderController@destroy'                                    )->name('destroy_classes');
+        });
+
+        Route::group(['prefix' => '/purchase_order_details'], function (){
+            Route::get          ('/',                            'PurchaseOrderDetailController@index'                                      )->name('classes');
+            Route::get          ('/get/{id}',                    'PurchaseOrderDetailController@get'                                        )->name('get_classes');
+            Route::post         ('/save',                        'PurchaseOrderDetailController@store'                                      )->name('save_classes');
+            Route::get          ('/edit/{id}',                   'PurchaseOrderDetailController@edit'                                       )->name('edit_classes');
+            Route::post         ('/update/{id}',                 'PurchaseOrderDetailController@update'                                     )->name('update_classes');
+            Route::post         ('/destroy',                     'PurchaseOrderDetailController@destroy'                                    )->name('destroy_classes');
         });
 
         Route::group(['prefix' => '/sites'], function (){
@@ -262,7 +272,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/governmentMandated',          'BenefitsController@governmentMandatedBenefits'                )->name('get_government_mandated_benefits');
             Route::post         ('/otherCompany',                'BenefitsController@otherCompanyBenefits'                      )->name('get_other_company_benefits');
         });
-        
+
         Route::group(['prefix' => '/reimbursements'], function (){
             Route::get          ('/',                            'ReimbursementController@index'                                     )->name('page');
             Route::get          ('/get',                         'ReimbursementController@get'                                       )->name('get');

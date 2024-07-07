@@ -25,7 +25,7 @@
                                 <th>DESCRIPTION</th>
                                 <th>CHART</th>
                                 <th>ACCOUNT</th>
-                                <th>TYPE</th>
+                                {{-- <th>TYPE</th> --}}
                             </tr>
                         </thead>
                     </table>
@@ -54,10 +54,10 @@
                         <label>DESCRIPTION</label>
                         <input type="text" class="form-control" id="description" name="description" placeholder="DESCRIPTION"/>
                     </div>
-                    <div class="form-group col-md-12 account">
+                    {{-- <div class="form-group col-md-12 account">
                         <label>ACCOUNT</label>
                         <input type="text" class="form-control" id="account" name="account" placeholder="ACCOUNT"/>
-                    </div>
+                    </div> --}}
                     <div class="form-group col-md-12 chart_id">
                         <label>CHART OF ACCOUNT</label>
                         <select name="chart_id" id="chart_id" class="form-control">
